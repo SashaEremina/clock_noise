@@ -4,7 +4,6 @@ if ~contains(pwd,strcat(selpath,'/figures'))
     cd([selpath,'/figures']);
 end
 
-
 hfig = figure(2);  % save the figure handle in a variable
 picturewidth = 20; % set this parameter and keep it forever
 hw_ratio = 0.8; % feel free to play with this ratio
