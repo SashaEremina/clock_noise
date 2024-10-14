@@ -1,17 +1,19 @@
-function overlay_t_and_y_w_trace(s)
+function overlay_t_and_y_no_trace(s)
+
+%figure;
 
 %intro params
-max_frames=100; %per tile
+max_frames=100;
 traces_y=1;
-frac_c_tot=189; %total frame number
-frac_c_start=1; 
+frac_c_tot=189;
+frac_c_start=1;
 f_channel1='y';
 color_y1=1;
 
 f_channel2='r';
 color_y2=0;
 
-r_b=242; %bottom boundary
+r_b=270; %bottom boundary
 
 
 %image1
@@ -40,7 +42,10 @@ end
 t_b=0; %beginning of tile
 t_e=0; %end of tile
 
-sL2=[];
+sL2=[]; %size L2
+
+t_b=0; %beginning of tile
+t_e=0; %end of tile
 
 if frac_c_start>1
     maxk=frac_c_tot;
@@ -48,10 +53,12 @@ else
     maxk=frac_c_tot+frac_c_start-1;
 end
 
+
 for k=frac_c_start:2:(maxk)
     
     L=z(:,:,k);
-  
+    %L=z(:,:,k);
+    
     %Using the mask to determine boundaries
       Lp2=zp(:,:,k);
       r2=regionprops(Lp2);
@@ -63,6 +70,9 @@ for k=frac_c_start:2:(maxk)
               r2_bb2(end+1)=r2(i).BoundingBox(1)+r2(i).BoundingBox(3);
           end
       end
+      
+        %r2_bb1_a=r2_bb1; %all left borders
+        %r2_bb2_a=r2_bb2; %all right borders
         
         r2_bb1=ceil(min(r2_bb1));
         r2_bb2=floor(max(r2_bb2));
@@ -92,18 +102,17 @@ for k=frac_c_start:2:(maxk)
       sum_r=sum(Lp2,2); %using the segmentation mask to find the top boundary
       r_top=min(find(sum_r>0)-2); 
       
-       if isempty(r_top)
-          r_top=1;
-       elseif r_top==0
-          r_top=1;  
-       end
-      
       L2=Lp(r_top:r_top+r_b,r_bb1:r_bb2-1,:);
       
       
        L2g=mat2gray(L2);
+       %BB=imbinarize(L2g);
        BB=L2g;
        BB2=imerode(BB,strel('disk',1,4));
+       if k==159
+           BB2=BB;
+       end
+       
        [B,~] = bwboundaries(BB2,'noholes');
        hold on
        
@@ -116,13 +125,15 @@ for k=frac_c_start:2:(maxk)
        end
                
        boundary = B{ind_tt};
-       plot(1+boundary(:,2)+t_e, boundary(:,1), 'w', 'LineWidth', 0.5);
+        
+        plot(1+boundary(:,2)+t_e, boundary(:,1), 'w', 'LineWidth', 0.5);
+
        
        t_e=size(L2,2)+t_b+1;
        t_b=t_e;
        
        hold off;
-   
+    
   
 end
    
