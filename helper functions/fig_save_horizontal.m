@@ -1,5 +1,6 @@
-if ~contains(pwd,'C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures')
-    cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures');
+%Location
+if ~contains(pwd,strcat(selpath,'/figures'))
+    cd([selpath,'/figures']);
 end
 
 hfig = figure(1);  % save the figure handle in a variable
