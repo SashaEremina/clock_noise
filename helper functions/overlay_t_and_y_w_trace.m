@@ -96,8 +96,8 @@ for k=frac_c_start:2:(maxk)
       sL2(end+1)=size(L2,2);
       
       sum_c=sum(Lp2); %using the segmentation mask to find the left boundary
-      r_bb1=min(find(sum_c>0));
-      r_bb2=max(find(sum_c>0));
+      r_bb1=find(sum_c>0, 1 );
+      r_bb2=find(sum_c>0, 1, 'last' );
       
       sum_r=sum(Lp2,2); %using the segmentation mask to find the top boundary
       r_top=min(find(sum_r>0)-2); 
