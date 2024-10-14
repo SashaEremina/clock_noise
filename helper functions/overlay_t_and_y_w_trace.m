@@ -1,4 +1,4 @@
-function overlay_t_and_y_no_trace(s)
+function overlay_t_and_y_w_trace(s)
 
 %figure;
 
