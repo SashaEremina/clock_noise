@@ -1,13 +1,14 @@
-close all; clear all; 
+close all;
+clearvars -except selpath;
 
 % loading the data - medium LL
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\wt_med_LL_rep1']); 
+cd([selpath, '/data/datasets/wt_med_LL_rep1']);
 
-MY=readmatrix('2021-07-17WT_reporter_mother_mean_fluor.csv'); 
+MY=readmatrix('WT_reporter_mother_mean_fluor.csv'); 
 MY=MY-200; %background subtraction
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('2021-07-17WT_reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -31,12 +32,13 @@ f(1)=plot(time_adjusted(st:end,l),CV1(st:end),'b','Linewidth',2,'DisplayName','m
 
 
 %% loading the data - low LL
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_low_LL']);
-MY=readmatrix('14-Dec-2022_WT-reporter_mother_mean_fluor.csv');
-MY=MY-300; %background subtraction
-surv=[1,ceil(max(find(~isnan(MY)))/300)]; 
+cd([selpath, '/data/datasets/WT_low_LL']);
 
-time_adjusted1=readmatrix('14-Dec-2022_WT-reporter_time_adjusted.csv');
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
+MY=MY-300; %background subtraction
+surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
+
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -57,12 +59,12 @@ hold on;
 f(2)=plot(time_adjusted(st:end,l),CV2(st:end),'g','Linewidth',2,'DisplayName','low LL');
 
 %% loading the data - high LL
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_high_LL']);
-MY=readmatrix('29-Mar-2022_WT-reporter_mother_mean_fluor.csv');
+cd([selpath, '/data/datasets/WT_high_LL']);
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 MY=MY-200; %background subtraction
-surv=[1,ceil(max(find(~isnan(MY)))/300)]; 
+surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('29-Mar-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 
 for i=1:surv(2)
@@ -91,7 +93,7 @@ xlabel('Time (h)');
 ylabel ('Variabitlity in gene expression (C.V.)');
 legend([f(2) f(1) f(3)], 'NumColumns',3);
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_5';
 fig_save_font_20;

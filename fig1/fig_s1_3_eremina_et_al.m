@@ -1,18 +1,19 @@
-close all; clear all; 
+close all;
+clearvars -except selpath;
  
 %% low light
 subplot(2,1,1);
 title('low LL');
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\WT_low_LL']);
+cd([selpath, '/data/datasets/WT_low_LL']);
 
-MY=readmatrix('14-Dec-2022_WT-reporter_mother_mean_fluor.csv');
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 
 MY=MY-300; %background subtraction
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('14-Dec-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -52,15 +53,15 @@ legend(h(2));
 subplot(2,1,2); 
 title('high LL');
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\WT_high_LL']);
+cd([selpath, '/data/datasets/WT_high_LL']);
 
-MY=readmatrix('29-Mar-2022_WT-reporter_mother_mean_fluor.csv');
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 
 MY=MY-200; %background subtraction
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('29-Mar-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -110,11 +111,11 @@ han.YLabel.Visible='on';
 ylabel(han,'Fluorescence (a.u.)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.6;
+y1(1)=y1(1)*2;
 han.YLabel.Position=y1;
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving 
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_3';
 fig_save_font_22;
 

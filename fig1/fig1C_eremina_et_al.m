@@ -5,7 +5,7 @@ end
 
 len_smooth=NaN(size(len,1),size(len,2));
 for i=1:length(len)
-    a=min(find(isnan(len(:,i))));
+    a=find(isnan(len(:,i)), 1 );
     len_smooth(1:a,i)=smooth(len(1:a,i));
 end
 
@@ -16,7 +16,7 @@ st=find(time_adjusted(:,1)==0);
 p=patchline(time_adjusted(st:end,:),len_smooth(st:end,:),'EdgeColor','b','EdgeAlpha',0.2);
 
 %an example of a single-cell trace highlighted
-a=13;
+a=12;
 y=len_smooth(:,a);
 x=time_adjusted(:,a)';
 h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','Representative lineage');

@@ -1,15 +1,16 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% load the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\noiseloops']);
+cd([selpath, '/data/noiseloops']);
 
 %1. WT under low LL
-nwt1=readmatrix('noiseloop_phasealigned_WT (ΔKaiBC) [low LL].csv');
-nwt1_m=readmatrix('noiseloop_phasealigned2_WT (ΔKaiBC) [low LL].csv');
+nwt1=readmatrix('noiseloop_phasealigned_WT [low LL].csv');
+nwt1_m=readmatrix('noiseloop_phasealigned2_WT [low LL].csv');
 
 %2. WT under high LL
-nwt3=readmatrix('noiseloop_phasealigned_WT (ΔKaiC-R215C) [high LL].csv');
-nwt3_m=readmatrix('noiseloop_phasealigned2_WT (ΔKaiC-R215C) [high LL].csv');
+nwt3=readmatrix('noiseloop_phasealigned_WT [high LL].csv');
+nwt3_m=readmatrix('noiseloop_phasealigned2_WT [high LL].csv');
 
 %% Fig.S1_6A: Plotting - low LL
 
@@ -71,8 +72,8 @@ yticks(0.02:0.01:0.05)
 ylabel('C.V.$^2$');
 xlabel('1/[YFP]');
 
-% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_6B';
 fig_save_font_20;
 
@@ -135,6 +136,6 @@ ylabel('C.V.$^2$');
 xlabel('1/[YFP]');
 
 % Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_6B';
 fig_save_font_20;

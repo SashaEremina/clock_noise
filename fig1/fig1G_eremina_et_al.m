@@ -1,10 +1,11 @@
-close all; clear all;
+close all;
+clearvars -except selpath; 
 
 %% load the data - WT under medium LL
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\noiseloops']);
+cd([selpath, '/data/noiseloops']);
 
-nwt2=readmatrix('noiseloop_phasealigned_WT (ΔKaiBC) [LL].csv');
-nwt2_m=readmatrix('noiseloop_phasealigned2_WT (ΔKaiBC) [LL].csv');
+nwt2=readmatrix('noiseloop_phasealigned_WT [LL].csv');
+nwt2_m=readmatrix('noiseloop_phasealigned2_WT [LL].csv');
 
 
 %% Plotting
@@ -63,7 +64,7 @@ yticks(0:0.01:0.04)
 ylabel('C.V.$^2$');
 xlabel('1/[YFP]');
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig1G';
 fig_save_font_20;

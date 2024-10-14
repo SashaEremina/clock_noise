@@ -1,12 +1,13 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-%load the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\wt_med_LL_rep1']);
-MY=readmatrix('2021-07-17WT_reporter_mother_mean_fluor.csv');
-time_adjusted=readmatrix('2021-07-17WT_reporter_time_adjusted.csv');
+%% load the data
+cd([selpath, '/data/datasets/wt_med_LL_rep1']);
+MY=readmatrix('WT_reporter_mother_mean_fluor.csv');
+time_adjusted=readmatrix('WT_reporter_time_adjusted.csv');
 
 %%Colorblind palette download
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\code\helper functions');
+cd([selpath, '/code/helper functions']);
 load('colorblind_colormap.mat');
 ii=4;
 
@@ -55,7 +56,7 @@ xlabel('Time (h)');
 title ({'HT-based decomposition', 'of fluorescence signal'});
 set(l,'box','off');
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_4A';
 fig_save_font_20;

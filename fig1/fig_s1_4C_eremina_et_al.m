@@ -1,8 +1,10 @@
-close all; clear all;
+close all; 
+clearvars -except selpath;
 
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\acfs')
-t=readmatrix('acf_time.csv');
-acf=readmatrix('acf_WT (ΔKaiBC) [LL].csv');
+%%
+cd([selpath, '/data/acfs']);
+t=readmatrix('acf_time_WT.csv');
+acf=readmatrix('acf_WT [LL].csv');
 acf20=acf(46,1:245);
 acf20=acf20(:,19:227); %to match the size of the time vector
 
@@ -42,7 +44,7 @@ title('Signal autocorrelation');
 
 text(28,1.15,'$y=a*e^{bx}$');
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_4C';
 fig_save_font_20;

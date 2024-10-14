@@ -1,12 +1,12 @@
-clear all; 
+clearvars -except selpath; 
 close all;
 
 %% plot1
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+cd([selpath, '/data/robustness']);
 
-wt_l1=readmatrix('robustness_WT (ΔKaiBC) [low LL].csv'); %low LL
-wt_l2=readmatrix('robustness_WT (ΔKaiBC) [LL].csv');%medium LL
-wt_l3=readmatrix('robustness_WT (ΔKaiC-R215C) [high LL].csv');%high LL
+wt_l1=readmatrix('robustness_WT [low LL].csv'); %low LL
+wt_l2=readmatrix('robustness_WT [LL].csv');%medium LL
+wt_l3=readmatrix('robustness_WT [high LL].csv');%high LL
 
 w1=wt_l1(:,3);
 w2=wt_l2(:,3);
@@ -42,20 +42,20 @@ end
 xlabel('Phase diffusion time (d)');
 
 %% plot2
-clear all
+clearvars -except selpath; 
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+cd([selpath, '/data/robustness']);
 
-wt_l1=readmatrix('robustness_WT (ΔKaiBC) [low LL].csv'); %low LL
-wt_l2=readmatrix('robustness_WT (ΔKaiBC) [LL].csv');%medium LL
-wt_l3=readmatrix('robustness_WT (ΔKaiC-R215C) [high LL].csv');%high LL
+wt_l1=readmatrix('robustness_WT [low LL].csv'); %low LL
+wt_l2=readmatrix('robustness_WT [LL].csv'); %medium LL
+wt_l3=readmatrix('robustness_WT [high LL].csv'); %high LL
 
 
 w1=wt_l1(:,2); 
 w2=wt_l2(:,2); 
 w3=wt_l3(:,2);
 
-%removing outliers
+%removing outliers - visulasiation purposes
 w1=rmoutliers(w1,'percentiles',[4 100]);
 w2=rmoutliers(w2,'percentiles',[17 100]);
 w3=rmoutliers(w3,'percentiles',[13 100]);
@@ -100,20 +100,20 @@ ylabel(han,'Probability');
 
 han.YLabel.Position(1)= han.YLabel.Position(1)*1.6;
 
-%% computing D, phase diffusion coefficients,
-D1=nanmean(rmoutliers(wt_l1(:,3)));
-D1_std=nanstd(rmoutliers(wt_l1(:,3)));
-
-D2=nanmean(rmoutliers(wt_l2(:,3)));
-D2_std=nanstd(rmoutliers(wt_l2(:,3)));
-
-D3=nanmean(rmoutliers(wt_l3(:,3)));
-D3_std=nanstd(rmoutliers(wt_l3(:,3)));
-
-%% Saving - disabled 
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving 
+cd([selpath,'/figures/fig1']);
 fname='fig1F'; 
 fig_save_font_22;
+
+%% computing D, phase diffusion coefficients
+D1=mean(rmoutliers(wt_l1(:,3)),'omitnan');
+D1_std=std(rmoutliers(wt_l1(:,3)),'omitnan');
+
+D2=mean(rmoutliers(wt_l2(:,3)),'omitnan');
+D2_std=std(rmoutliers(wt_l2(:,3)),'omitnan');
+
+D3=mean(rmoutliers(wt_l3(:,3)),'omitnan');
+D3_std=std(rmoutliers(wt_l3(:,3)),'omitnan');
 
 
 

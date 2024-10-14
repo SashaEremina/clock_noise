@@ -1,7 +1,9 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\hilbertphase']);
-ph=readmatrix('hilbertphase_WT (ΔKaiBC) [LL].csv');
+%% 
+cd([selpath, '/data/hilbertphase']);
+ph=readmatrix('hilbertphase_WT [LL].csv');
 
 ph=ph(:,3:end);
 
@@ -27,7 +29,7 @@ ylabel('Phase, $${\phi}$$');
 xlim([0 132]); 
 title('Phase diffusion and robustness');
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig_s1_4B';
 fig_save_font_20;

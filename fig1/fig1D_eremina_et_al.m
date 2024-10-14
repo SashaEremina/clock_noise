@@ -1,4 +1,7 @@
-MY=MY-200; %background subtraction
+
+if max(max(MY))>450
+    MY=MY-200; %background subtraction
+end
 
 MY_smooth=NaN(size(MY,1),size(MY,2));
 for i=1:length(MY)

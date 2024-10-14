@@ -1,12 +1,12 @@
-clear all;
+clearvars -except selpath
 close all;
 
-%data upload
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+%% data upload
+cd([selpath, '/data/robustness']);
 
-wt_l1=readmatrix('robustness_WT (ΔKaiBC) [low LL].csv'); %low LL
-wt_l2=readmatrix('robustness_WT (ΔKaiBC) [LL].csv');%medium LL
-wt_l3=readmatrix('robustness_WT (ΔKaiC-R215C) [high LL].csv');%high LL
+wt_l1=readmatrix('robustness_WT [low LL].csv'); %low LL
+wt_l2=readmatrix('robustness_WT [LL].csv');%medium LL
+wt_l3=readmatrix('robustness_WT [high LL].csv');%high LL
 
 
 
@@ -43,18 +43,16 @@ end
 xlabel('Period (h)');
 ylabel ('Probability')
 
-fname='fig1E';
-
-v1=vline(nanmean(w1),'--g');
-v2=vline(nanmean(w2),'--b');
-v3=vline(nanmean(w3),'--m');
+v1=vline(mean(w1,'omitnan'),'--g');
+v2=vline(mean(w2,'omitnan'),'--b');
+v3=vline(mean(w3,'omitnan'),'--m');
 
 v1.LineWidth=2; v1.DisplayName='low LL mean';
 v2.LineWidth=2; v2.DisplayName='medium LL mean';
 v3.LineWidth=2; v3.DisplayName='high LL mean';
 
-%% Saving - disabled
-cd('C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig1');
+%% Saving
+cd([selpath,'/figures/fig1']);
 fname='fig1E';
 fig_save_font_22;
 
