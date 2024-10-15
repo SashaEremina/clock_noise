@@ -1,19 +1,19 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% Pt 1 - top panel 
 
 %%LD medium
+cd([selpath, '/data/datasets/WT_med_LD']);
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_med_LD']);
-
-MY=readmatrix('25-Feb-2022_WT_mother_mean_fluor.csv');
+MY=readmatrix('WT_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('25-Feb-2022_WT_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -42,10 +42,10 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 
 hold on; 
 
-y=nanmean(MY_smooth');
+y=mean(MY','omitnan');
 y=y(st:end);
 
-std_dev=nanstd(MY_smooth');
+std_dev=std(MY','omitnan');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
@@ -67,8 +67,8 @@ set(h(1),'facealpha',.3);
 hold on; 
 
 %mean trace
-y=nanmean(MY_smooth');
-std_dev=nanstd(MY_smooth');
+y=mean(MY','omitnan');
+std_dev=std(MY','omitnan');
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 x=time_adjusted(:,l)';
 h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','mean medium LD');
@@ -80,16 +80,16 @@ hold on; text (0,yl(2)*0.8,strcat('n medium LD = ',{' '},num2str(GR.m_cell_num(1
 
 
 %% LD low intensity
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_low_LD']);
+cd([selpath, '/data/datasets/WT_low_LD']);
 
-MY=readmatrix('20-Aug-2022_WT-reporter_mother_mean_fluor.csv');
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('20-Aug-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -99,6 +99,7 @@ end
 clear hL
 
 MY_smooth=NaN(size(MY,1),size(MY,2));
+
 for i=1:length(MY)
     a=find(isnan(MY(:,i)), 1 );
     MY_smooth(1:a,i)=smooth(MY(1:a,i));
@@ -115,10 +116,10 @@ hold on;
 
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 
-y=nanmean(MY_smooth');
+y=mean(MY_smooth','omitnan');
 y=y(st:end);
 
-std_dev=nanstd(MY_smooth');
+std_dev=std(MY_smooth','omitnan');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
@@ -139,8 +140,8 @@ set(h(3),'facealpha',.3);
 
 hold on; 
 %mean trace
-y=nanmean(MY_smooth');
-std_dev=nanstd(MY_smooth');
+y=mean(MY','omitnan');
+std_dev=std(MY','omitnan');
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 x=time_adjusted(:,l)';
 h(4)=plot(x(st:end), y(st:end), 'g', 'LineWidth', 2,'DisplayName','mean low LD'); % $\ $ $\ $ $\ $ $\ $
@@ -160,7 +161,7 @@ ylabel({'Fluorescence (a.u.)'});
 
 
 %% Pt 2 - bottom panel, simulations
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\traces_Fig4']);
+cd([selpath, '/simulations/traces_Fig4']);
 
 %LD low
 D=dir('*LDtrace.low*');
@@ -220,7 +221,7 @@ ylim([0.1 0.4]); yticks(0.1:0.1:0.4);
 
 %MANUAL ADJUSTMENTS TO FIG.SIZE
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig4']);
+%% Saving
+cd([selpath,'/figures/fig4']);
 fname='fig4A';
 fig_save_font_20;

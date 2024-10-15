@@ -1,14 +1,15 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-%1. LD medium
+%% 1. LD medium
 figure; subplot (2,1,2)
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_med_LD']);
+cd([selpath, '/data/datasets/WT_med_LD']);
 
-MY=readmatrix('25-Feb-2022_WT_mother_mean_fluor.csv');
+MY=readmatrix('WT_mother_mean_fluor.csv');
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('25-Feb-2022_WT_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -49,16 +50,16 @@ xlim([-12 120]); xticks(0:12:120);
 title ('medium LD');
 
 %% 2. LD low
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\WT_low_LD']);
+cd([selpath, '/data/datasets/WT_low_LD']);
 
-MY=readmatrix('20-Aug-2022_WT-reporter_mother_mean_fluor.csv');
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('20-Aug-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -112,7 +113,7 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig4']);
+%% Saving
+cd([selpath, '/figures/fig4']);
 fname='fig_s4_1';
 fig_save_font_20;

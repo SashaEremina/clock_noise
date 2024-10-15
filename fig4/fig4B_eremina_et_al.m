@@ -1,7 +1,9 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-%simulations
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\p2pstats']);
+
+%% simulations
+cd([selpath, '/simulations/p2pStatistics/p2p-LLvsLD_Fig4']);
 
 s_hld=readmatrix('LDsim_p2p.csv');
 s_mld=readmatrix('LDsim_low_p2p.csv');
@@ -10,10 +12,10 @@ s_ll=readmatrix('LLsim_low_p2p.csv');
 s_ml=readmatrix('LLsim_p2p.csv');
 
 %data w/ error bars
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\p2pstats_errorbars']);
+cd([selpath, '/data/p2pstats_errorbars']);
 
-WT_ml=readmatrix('p2pstats_bootstrap_WT (KaiBC) [LL].csv');
-WT_ll=readmatrix('p2pstats_bootstrap_WT (KaiBC) [low LL].csv');
+WT_ml=readmatrix('p2pstats_bootstrap_WT [LL].csv');
+WT_ll=readmatrix('p2pstats_bootstrap_WT [low LL].csv');
 
 WT_hld=readmatrix('p2pstats_bootstrap_WT [LD sq].csv');
 WT_mld=readmatrix('p2pstats_bootstrap_WT [LD sq low].csv');
@@ -51,7 +53,7 @@ xticklabels({'0','1','2','3'});
 xlabel ('Trough-to-trough distance (d)');
 ylabel ('Trough-to-trough variance');
 
-%%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig4']);
+%% Saving
+cd([selpath, '/figures/fig4']);
 fname='fig4B';
 fig_save_font_20;

@@ -1,23 +1,24 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% load the data - wt
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\p2pstats_errorbars']);
+cd([selpath, '/data/p2pstats_errorbars']);
 
-WT_ml_1=readmatrix('p2pstats_bootstrap_WT (ΔKaiBC) [LL].csv');
-WT_ll=readmatrix('p2pstats_bootstrap_WT (ΔKaiBC) [low LL].csv');
-WT_hl=readmatrix('p2pstats_bootstrap_WT (ΔKaiC-R215C) [high LL].csv');
+WT_ml_1=readmatrix('p2pstats_bootstrap_WT [LL].csv');
+WT_ll=readmatrix('p2pstats_bootstrap_WT [low LL].csv');
+WT_hl=readmatrix('p2pstats_bootstrap_WT [high LL].csv');
 
 WT_ml_2=readmatrix('p2pstats_bootstrap_WT (ΔlalA) [LL].csv');
-WT_ml_3=readmatrix('p2pstats_bootstrap_WT (ΔKaiC-R215C) [medium LL].csv');
+WT_ml_3=readmatrix('p2pstats_bootstrap_WT (KaiC-R215C) [medium LL].csv');
 
-WT_Ab=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C (no mutation) [LL].csv'); 
+WT_Ab=readmatrix('p2pstats_bootstrap_WT-Ab [LL].csv'); 
 
 %% load the data - del_regs
 
 lalA=readmatrix('p2pstats_bootstrap_ΔlalA [LL].csv');
 ldpA=readmatrix('p2pstats_bootstrap_ΔldpA [LL].csv');
 pex=readmatrix('p2pstats_bootstrap_Δpex [LL].csv');
-prkE=readmatrix('p2pstats_bootstrap_ΔprkE [LL] (outlier removed).csv');
+prkE=readmatrix('p2pstats_bootstrap_ΔprkE [LL].csv');
 
 ldpA2=readmatrix('p2pstats_bootstrap_ΔldpA (repeat) [LL].csv');
 prkE2=readmatrix('p2pstats_bootstrap_ΔprkE (repeat) [LL].csv');
@@ -82,23 +83,8 @@ han.XLabel.Visible = 'on';
 xlabel ('Trough-to-trough distance (d)');
 
 
-%%
-
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig4']);
+%% Saving
+cd([selpath, '/figures/fig4']);
 fname='fig_s4_2';
 fig_save_font_20;
-
-%% cell counts
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-R215C_med_LL_rep1'])
-WT_c=readmatrix('29-Mar-2022_WT-reporter_mother_length.csv');
-wt_c=ceil(find(~isnan(WT_c), 1, 'last' )/300);
-
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\del_prkE_med_LL-2'])
-PRKE_2_c=readmatrix('03-Jun-2024_del_prkE_2__mother_length.csv');
-prkE_2_c=ceil(find(~isnan(PRKE_2_c), 1, 'last' )/300);
-
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\del_ldpA_med_LL-2'])
-LDPA_c=readmatrix('28-Apr-2024_del_ldpA_mother_length.csv');
-ldpA_c=ceil(find(~isnan(LDPA_c), 1, 'last' )/300);
 
