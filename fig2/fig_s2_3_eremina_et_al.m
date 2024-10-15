@@ -1,17 +1,25 @@
-close all; clear all;
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\noiseloops']);
+close all; 
+clearvars -except selpath;
+
 
 %% Plotting
+cd([selpath, '/data/noiseloops']);
+
 %WT
-nwt1_m=readmatrix('noiseloop_phasealigned2_WT (KaiBC) [LL].csv');
+nwt1_m=readmatrix('noiseloop_phasealigned2_WT (ΔlalA) [LL].csv');
 
 figure; subplot(3,2,1);
 c=winter(64);
 
-for i=1:5 
+for i=1:5
     if i<5
-        p(i)=plot(nwt1_m(i*100+1:i*100+100,2),nwt1_m(i*100+1:i*100+100,3),'LineWidth',2,'DisplayName',['period','{ }', num2str(i)]);
-        p(i).Color=c(i*10,:);
+        if i>1 
+            p(i)=plot(nwt1_m((i-1)*100+71+1:(i-1)*100+71+100,2),nwt1_m((i-1)*100+71+1:(i-1)*100+71+100,3),'LineWidth',2,'DisplayName',['period','{ }', num2str(i)]);
+            p(i).Color=c(i*10,:);
+        else
+            p(i)=plot(nwt1_m(71:171,2),nwt1_m(71:171,3),'LineWidth',2,'DisplayName',['period','{ }', num2str(i)]);
+            p(i).Color=c(i*10,:);
+        end
     end
     hold on;
 end
@@ -19,11 +27,11 @@ end
 title('WT');
 ax=gca;
 ax.YAxis.Exponent=-3;
-ylim([0 10*10^(-3)]); yticks(0:4*10^(-3):10*10^(-3));
-xlim([1.5*10^(-3) 3.5*10^(-3)])
+ylim([0 20*10^(-3)]); yticks(0:10*10^(-3):20*10^(-3));
+xlim([1.5*10^(-3) 8*10^(-3)])
 
 
-%del_ldpA
+%% del_ldpA
 nldpA_m=readmatrix('noiseloop_phasealigned2_ΔldpA [LL].csv');
 
 subplot(3,2,2);
@@ -56,7 +64,7 @@ lgd.Position(1)=0.58;
 lgd.Position(2)=0.15;
 
 
-%del_lalA
+%% del_lalA
 nlalA_m=readmatrix('noiseloop_phasealigned2_ΔlalA [LL].csv');
 
 subplot(3,2,5);
@@ -79,7 +87,7 @@ ylim([0 20*10^(-3)]); yticks(0:10*10^(-3):20*10^(-3));
 ax=gca;
 ax.YAxis.Exponent=-3;
 
-%del_pex
+%% del_pex
 npex_m=readmatrix('noiseloop_phasealigned2_Δpex [LL].csv');
 
 subplot(3,2,3);
@@ -103,7 +111,7 @@ ax.YAxis.Exponent=-3;
 ylim([10*10^(-3) 45*10^(-3)]); yticks(10*10^(-3):15*10^(-3):45*10^(-3));
 
 
-%del_prkE
+%% del_prkE
 nprkE_m=readmatrix('noiseloop_phasealigned2_ΔprkE [LL].csv');
 
 subplot(3,2,4);
@@ -133,7 +141,7 @@ han.YLabel.Visible='on';
 ylabel(han,'C.V.$^2$');
 xlabel(han,'1/[YFP]');
 
-%% Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig2']);
+%% Saving
+cd([selpath,'/figures/fig2']);
 fname='fig_s2_3';
 fig_save_font_20;

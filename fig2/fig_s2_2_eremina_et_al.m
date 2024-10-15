@@ -1,11 +1,10 @@
 close all;
-clear all;
+clearvars -except selpath;
 
-%load the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+%% load the data
+cd([selpath, '/data/robustness']);
+
 prkE=readmatrix('robustness_ΔprkE [LL].csv');
-prkE(19,:)=[]; %removing the sick cell;
-
 pex=readmatrix('robustness_Δpex [LL].csv');
 ldpA=readmatrix('robustness_ΔldpA [LL].csv');
 lalA=readmatrix('robustness_ΔlalA [LL].csv');
@@ -20,22 +19,22 @@ cp=[174,1,126; 166,206,227;
 cp=cp./255;
 
 
-%% Part 1, autocorrelation time: removing the outliers
-w1=(2./[ldpA(:,2)'])/24; %del_ldpA
-w1=rmoutliers(w1,'percentiles',[0 98]);
+%% Part 1, autocorrelation time:
+w1=(2./(ldpA(:,2)'))/24; %del_ldpA
+w1=rmoutliers(w1,'percentiles',[0 98]); %removing the outliers for plotting
 
-w2=(2./[pex(:,2)'])/24; %del_pex#
-w2=rmoutliers(w2,'percentiles',[0 92]);
+w2=(2./(pex(:,2)'))/24; %del_pex
+w2=rmoutliers(w2,'percentiles',[0 92]); %removing the outliers for plotting
 
-w3=(2./[prkE(:,2)'])/24; %del_prkE
+w3=(2./(prkE(:,2)'))/24; %del_prkE
 
-w4=(2./[lalA(:,2)'])/24; %del_lalA
-w4=rmoutliers(w4,'percentiles',[0 99]);
-w4(w4>1000)=NaN; %only for plotting purposes
+w4=(2./(lalA(:,2)'))/24; %del_lalA
+w4=rmoutliers(w4,'percentiles',[0 99]); %removing the outliers for plotting
+w4(w4>1000)=NaN; %removing the outliers for plotting
 
-w5=(2./[WT(:,2)'])/24;
-w5=rmoutliers(w5,'percentiles',[0 86]);
-w5(w5>1000)=NaN; %only for plotting purposes
+w5=(2./(WT(:,2)'))/24;
+w5=rmoutliers(w5,'percentiles',[0 86]); %removing the outliers for plotting
+w5(w5>1000)=NaN; %removing the outliers for plotting
 
 
 %% Plotting
@@ -65,11 +64,11 @@ titles = {'WT','$\Delta$\it ldpA', '$\Delta$\it pex', '$\Delta$\it prkE','$\Delt
 titleHandles = gobjects(numel(titles),1); 
 
 %Actual plotting
-subplot(5,2,2); h(5)=histogram(w5,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'WT','Units','normalized') %legend ('WT') 
-subplot(5,2,4); h(1)=histogram(w1,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it ldpA','Units','normalized'); %legend ('$\Delta$ldpA')
-subplot(5,2,6); h(2)=histogram(w2,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it pex','Units','normalized'); %legend ('$\Delta$pex')
-subplot(5,2,8); h(3)=histogram(w3,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it prkE','Units','normalized'); %legend ('$\Delta$prkE')
-subplot(5,2,10); h(4)=histogram(w4,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it lalA','Units','normalized'); %legend ('$\Delta$lalA')
+subplot(5,2,2); h(5)=histogram(w5,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'WT','Units','normalized')  
+subplot(5,2,4); h(1)=histogram(w1,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it ldpA','Units','normalized'); 
+subplot(5,2,6); h(2)=histogram(w2,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it pex','Units','normalized'); 
+subplot(5,2,8); h(3)=histogram(w3,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it prkE','Units','normalized'); 
+subplot(5,2,10); h(4)=histogram(w4,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.6,0.6,'$\Delta$\it lalA','Units','normalized'); 
 xlabel('Autocorrelation time (d)');
 
 for hh=1:5
@@ -82,19 +81,19 @@ for hh=1:5
     h(hh).EdgeColor=h(hh).FaceColor;
 end
 
-%% Part 2, phase diffusion time: removing the outliers
-w1=(1./[ldpA(:,3)'])/24; %del_ldpA
-w1(w1==max(w1))=[];
+%% Part 2, phase diffusion time: 
+w1=(1./(ldpA(:,3)'))/24; %del_ldpA
+w1(w1==max(w1))=[]; %removing the outliers for plotting
 
-w2=(1./[pex(:,3)'])/24; %del_pex
-w2(w2==max(w2))=[];
+w2=(1./(pex(:,3)'))/24; %del_pex
+w2(w2==max(w2))=[]; %removing the outliers for plotting
 
-w3=(1./[prkE(:,3)'])/24; %del_prkE
+w3=(1./(prkE(:,3)'))/24; %del_prkE
 
-w4=(1./[lalA(:,3)'])/24; %del_lalA
+w4=(1./(lalA(:,3)'))/24; %del_lalA
 
-w5=(1./[WT(:,3)'])/24; %WT
-w5(w5==max(w5))=[];
+w5=(1./(WT(:,3)'))/24; %WT
+w5(w5==max(w5))=[]; %removing the outliers for plotting
 
 
 %% Plotting
@@ -124,6 +123,6 @@ ylabel(han,'Probability');
 han.YLabel.Position(1)=han.YLabel.Position(1)*1.4;
 
 %% Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig2']);
+cd([selpath,'/figures/fig2']);
 fname='fig_s2_2';
 fig_save_font_20;

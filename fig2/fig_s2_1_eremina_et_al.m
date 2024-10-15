@@ -1,10 +1,11 @@
 close all;
+clearvars -except selpath;
 
-%loading the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+
+%% loading the data
+cd([selpath, '/data/robustness']);
+
 prkE=readmatrix('robustness_ΔprkE [LL].csv');
-prkE(19,:)=[]; %removing the sick cell;
-
 pex=readmatrix('robustness_Δpex [LL].csv');
 ldpA=readmatrix('robustness_ΔldpA [LL].csv');
 lalA=readmatrix('robustness_ΔlalA [LL].csv');
@@ -21,11 +22,11 @@ cp=cp./255;
 
 
 %establishing the data structures
-w1=[ldpA(:,1)']; %del_ldpA
-w2=[pex(:,1)']; %del_pex
-w3=[prkE(:,1)']; %del_prkE
-w4=[lalA(:,1)']; %del_lalA
-w5=[WT(:,1)']; w5=rmoutliers(w5,'percentiles',[3 100]);
+w1=ldpA(:,1)'; %del_ldpA
+w2=pex(:,1)'; %del_pex
+w3=prkE(:,1)'; %del_prkE
+w4=lalA(:,1)'; %del_lalA
+w5=WT(:,1)'; w5=rmoutliers(w5,'percentiles',[3 100]);
 
 %statistical analysis of the period differences
 [p1,h1]=ranksum(w5,w1);
@@ -65,6 +66,6 @@ sigstar({{'WT','$${\Delta}$$\it ldpA'},{'WT','$${\Delta}$$\it pex'},{'WT','$${\D
 
 
 %% Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig2']);
+cd([selpath,'/figures/fig2']);
 fname='fig_s2_1';
 fig_save_font_20;

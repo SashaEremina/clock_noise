@@ -1,7 +1,9 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% Subplot 1 - mothers
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\mothers']);
+cd([selpath, '/data/mothers']);
+
 lalA_m=readmatrix('mothers_syncidx_ΔlalA [LL].csv');
 ldpA_m=readmatrix('mothers_syncidx_ΔldpA [LL].csv');
 pex_m=readmatrix('mothers_syncidx_Δpex [LL].csv');
@@ -38,7 +40,6 @@ xticks(0:12:140); xlim([0 110]);
 legend ([f(1),f(3),f(4),f(5),f(2)],'Location','bestoutside');
 title ('Clock synchronisation between mother cells');
 
-fname='synch_del_reg';
 xlim([3 93]);
 ylim([0.5 1.1]);yticks(0.6: 0.2 :1);
 
@@ -46,7 +47,8 @@ ylim([0.5 1.1]);yticks(0.6: 0.2 :1);
 %% Subplot 2 -- daughters 
 
 %load the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\daughters']);
+cd([selpath, '/data/daughters']);
+
 wt=readmatrix('daughter_phasediff_mean_WT (ΔlalA) [LL].csv');
 lalA=readmatrix('daughter_phasediff_mean_ΔlalA [LL].csv');
 pex=readmatrix('daughter_phasediff_mean_Δpex [LL].csv');
@@ -75,10 +77,10 @@ ylabel('Error');
 title('Clock phase differences at division')
 
 legend ([s(1),s(5), s(3), s(4), s(2)],'Location','bestoutside');
-yticks([-0.5:0.1:0.5]); ylim([- 0.25 0.25]);
+yticks(-0.5:0.1:0.5); ylim([- 0.25 0.25]);
 xlim([-0.1 1]); xticks(0:0.2:1);
 
 %% Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig2']);
+cd([selpath,'/figures/fig2']);
 fname='fig2D';
 fig_save_font_20;

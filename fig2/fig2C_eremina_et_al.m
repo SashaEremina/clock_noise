@@ -1,5 +1,6 @@
 
-close all; clear all; 
+close all;
+clearvars -except selpath;
 
 %establishing a color palette
 cp=[174,1,126; 166,206,227;
@@ -9,8 +10,8 @@ cp=[174,1,126; 166,206,227;
 cp=cp./255;
 
 
-%loading the data 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance']);
+%% loading the data 
+cd([selpath, '/data/meanautocovariance']);
 
 prkE = readmatrix('autocov_ΔprkE [LL].csv'); 
 pex= readmatrix('autocov_Δpex [LL].csv');
@@ -38,7 +39,7 @@ p3.Color=cp(3,:);
 
 l=legend([p1 p2 p3],'Location','NorthEastoutside');
 
-xlim([-96 96]); xticks([-96:24:96]); xtickangle(45)
+xlim([-96 96]); xticks(-96:24:96); xtickangle(45)
 ylim([-1.2 1.2]);
 
 
@@ -54,17 +55,17 @@ p6.Color=cp(1,:);
 
 xlabel ('Lag (h)');
 
-p1.LineWidth=[3]; p1.Color(4)=0.5;
-p2.LineWidth=[3]; p2.Color(4)=0.5;
-p3.LineWidth=[3]; p3.Color(4)=0.5;
-p4.LineWidth=[3]; p4.Color(4)=0.5;
-p5.LineWidth=[3]; p5.Color(4)=0.5;
-p6.LineWidth=[3]; p6.Color(4)=0.5;
+p1.LineWidth=3; p1.Color(4)=0.5;
+p2.LineWidth=3; p2.Color(4)=0.5;
+p3.LineWidth=3; p3.Color(4)=0.5;
+p4.LineWidth=3; p4.Color(4)=0.5;
+p5.LineWidth=3; p5.Color(4)=0.5;
+p6.LineWidth=3; p6.Color(4)=0.5;
 
 
 l=legend([p6 p4 p5],'Location','NorthEastoutside');
 
-xlim([-96 96]); xticks([-96:24:96]); xtickangle(45)
+xlim([-96 96]); xticks(-96:24:96); xtickangle(45)
 ylim([-1.2 1.2]);
 
 %% Figure styling
@@ -77,8 +78,8 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig2']);
+%% Saving
+cd([selpath,'/figures/fig2']);
 fname='fig2C';
 fig_save_font_20;
 
