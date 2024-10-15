@@ -1,13 +1,13 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% Part 1 -- Caribbean 1
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\caribbean_1']);
-int=readmatrix('10-Aug-2022_WT_light_intensity.csv');
-int=int-min(int); %remove when adjusted
-int=(int*19.7)/0.18; %remove this after adjusted light intensity is uploaded
+cd([selpath, '/data/datasets/caribbean_1']);
+int=readmatrix('WT_light_intensity.csv');
+int=(int*19.7);
 
-time_light2=readmatrix('25-Feb-2022_WT_time_light_adjusted.csv');
+time_light2=readmatrix('WT_time_light_adjusted.csv');
 
 
 figure; 
@@ -29,12 +29,12 @@ title('Caribbean 1: Jan $7^{th}$-$12^{th}$, 2017');
 
 %% Part 2 -- Caribbean 2
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\caribbean_2'])
+cd([selpath, '/data/datasets/caribbean_2']);
 
-int=readmatrix('07-Oct-2022_WT-reporter_light_intensity.csv');
+int=readmatrix('WT-reporter_light_intensity.csv');
 int=int*19.7;
 
-time_light2=readmatrix('07-Oct-2022_WT-reporter_time_light_adjusted.csv');
+time_light2=readmatrix('WT-reporter_time_light_adjusted.csv');
 
 %plot the light intensities
 hold on;
@@ -69,7 +69,7 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig_s6_1A';
 fig_save_font_20;

@@ -1,9 +1,10 @@
-close all; clear all
+close all;
+clearvars -except selpath;
 
 %% Pt1: Square and Smooth
 %Loading the data
 d=[1 2 3 4 5];
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\noiseaveraging_SupplFig\new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
 
 c1_sm=readmatrix('LDsim_car1_smoothed.csv');
 c1_sq=readmatrix('LDsim_car1_square.csv');
@@ -47,7 +48,7 @@ han.YLabel.Position=y1;
 %% Part 2:  Natural and Experiment
 %Loading the data
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\noiseaveraging_SupplFig\new'])
+cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
 ndc1_sim=readmatrix('LDsim_carr1.csv');
 ndc2_sim=readmatrix('LDsim_carr2.csv');
 ndc1_exp=readmatrix('LDexp_carr1.csv');
@@ -84,8 +85,8 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig6D';
 fig_save_font_20_box_on;
 

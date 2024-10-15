@@ -1,25 +1,24 @@
-close all; clear all
+close all;
+clearvars -except selpath;
+
 
 %% Pt 1 - plotting the environments
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\noiseaveraging_SupplFig\new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
+
 
 %Plotting the environments: Caribbean 1
 c1_sm=readmatrix('caribbean1_smoothed.csv');
 c1_sq=readmatrix('caribbean1_square.csv');
 
-%cd(['D:\from_CSCS\microscope\Sasha\2022-02-17-cyano2-prime\subAuto\Data']);
-%load('intensity_adjusted.mat'); %this is where the coefficient of 0.18
-%comes from
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\caribbean_1']);
-int=readmatrix('10-Aug-2022_WT_light_intensity.csv');
-int=int-min(int); %remove when adjusted
+cd([selpath, '/data/datasets/caribbean_1']);
+int=readmatrix('WT_light_intensity.csv');
 
-time_light2=readmatrix('25-Feb-2022_WT_time_light_adjusted.csv');
+time_light2=readmatrix('WT_time_light_adjusted.csv');
 
 c1_sm(:,2)=c1_sm(:,2)*19.7; %19.7 comes from the microscope measurements (Metamoph units -> real light)
 c1_sq(:,2)=c1_sq(:,2)*19.7;
-c1_r=int*19.7/0.18; %remove this after adjusted light intensity is uploaded
+c1_r=int*19.7;
 
 figure(1); subplot(2,1,1); title('Caribbean 1');
 
@@ -31,17 +30,13 @@ xlim([-12 120]); xticks(0:24:120);
 ylim([0 90]); yticks(0:15:90);
 
 %% Plotting the environments: Caribbean 2
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\noiseaveraging_SupplFig\new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
 c2_sm=readmatrix('caribbean2_smoothed.csv');
 c2_sq=readmatrix('caribbean2_square.csv');
 
-% cd(['D:\from_CSCS\microscope\Sasha\2022-03-16-cyano2-prime\subAuto\Data']);
-% load('intensity_adjusted.mat');
-% load('time_light2.mat');
-
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\caribbean_2']);
-int=readmatrix('07-Oct-2022_WT-reporter_light_intensity.csv');
-time_light=readmatrix('07-Oct-2022_WT-reporter_time_light_adjusted.csv');
+cd([selpath, '/data/datasets/caribbean_2']);
+int=readmatrix('WT-reporter_light_intensity.csv');
+time_light=readmatrix('WT-reporter_time_light_adjusted.csv');
 
 c2_sm(:,2)=c2_sm(:,2)*19.7; %19.7 comes from the microscope measurements (Metamoph units -> real light)
 c2_sq(:,2)=c2_sq(:,2)*19.7;
@@ -71,8 +66,8 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig6C';
-fig_save_font_20_box_off; %check for box/ no box!
+fig_save_font_20_box_on; %check for box/ no box!
 

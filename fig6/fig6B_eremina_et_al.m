@@ -1,7 +1,9 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-%Loading the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\p2pStatistics\noisyenvironments_Fig5']) %data location might change
+%% Loading the data
+
+cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig6']);
 ndc1_sim=readmatrix('LDsim_carr1.csv');
 ndc2_sim=readmatrix('LDsim_carr2.csv');
 
@@ -46,8 +48,8 @@ han.Visible = 'off';
 ylabel('Mean trough time (h)')
 han.YLabel.Visible = 'on';
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig6B';
-fig_save_font_20;
+fig_save_font_20_box_on;
 

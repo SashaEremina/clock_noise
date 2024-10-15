@@ -1,6 +1,8 @@
-close all;clear all;
+close all;
+clearvars -except selpath;
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\p2pStatistics\noisydaySupplement'])
+%%
+cd([selpath, '/simulations/p2pStatistics/noisydaySupplement']);
 
 d=[1 2 3 4 5 6];
 
@@ -56,7 +58,7 @@ legend ('Location','BestOutside');
 ylabel({'C.V. (MTT)'});
 
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig_s6_2B';
 fig_save_font_20;

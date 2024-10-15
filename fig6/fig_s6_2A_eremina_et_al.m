@@ -1,16 +1,13 @@
 close all;
-clear all;
+clearvars -except selpath;
 
+%% 
+cd([selpath, '/data/datasets/noisy_day']);
+MY=readmatrix('WT_mother_mean_fluor.csv');
+time_adjusted=readmatrix('WT_time_adjusted.csv');
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\noisy_day'])
-MY=readmatrix('26-Nov-2021_WT_2021-11-26_mother_mean_fluor.csv');
-%time_adjusted=readmatrix('26-Nov-2021_WT_2021-11-26_time_adjusted.csv'); %fix the vector and upload a new one!
-
-cd(['D:\from_CSCS\microscope\Sasha\2021-10-30-cyano2-prime\subAuto\Data']); %for now
-load('CY117_2021_12_06_mat_2021-11-06.mat', 'time_adjusted')
-
-t_light_int_h_adj=readmatrix('26-Nov-2021_WT_2021-11-26_time_light_adjusted.csv');
-intensity=readmatrix('26-Nov-2021_WT_2021-11-26_light_intensity.csv');
+t_light_int_h_adj=readmatrix('WT_time_light_adjusted.csv');
+intensity=readmatrix('WT_light_intensity.csv');
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
 %background subtraction
@@ -36,15 +33,15 @@ alpha(0.15);
 
 st=20;
 
-y=nanmean(MY_smooth');
+y=mean(MY_smooth','omitnan');
 y=y(st:end);
 
-std_dev=nanstd(MY_smooth');
+std_dev=std(MY_smooth','omitnan');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
 x=time_adjusted;
-x=x(st:end,13)'; %remove when time vector is fixed
+x=x(st:end,13)'; %longest time-trace
 
 keepIndex = ~isnan(y) & ~isnan(std_dev) & ~isnan(x);
 y=y(keepIndex);
@@ -74,7 +71,6 @@ hold on; text (-10,yl(2)*1.25,strcat('n=',num2str(GR.m_cell_num(2))));
 
 xlabel('Time (h)');
 ylabel('Fluorescence (a.u.)');
-%title('Noisy day');
 
 %Plotting the light levels
 yyaxis right
@@ -88,7 +84,7 @@ ax.YColor='k';
 
 box on
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig6']);
+%% Saving
+cd([selpath,'/figures/fig6']);
 fname='fig_s6_2A';
 fig_save_font_20;
