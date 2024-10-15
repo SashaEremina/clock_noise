@@ -3,23 +3,12 @@ if ~contains(pwd,strcat(selpath,'/figures'))
     cd([selpath,'/figures']);
 end
 
-%cd([C:\Users\sasha.eremina\Documents\MATLAB\Thesis_fig\Chapt4]);
-
 hfig = figure(1);  % save the figure handle in a variable
 picturewidth = 20; % set this parameter and keep it forever
 hw_ratio = 0.8; % feel free to play with this ratio
 hw_ratio1 = 0.8; % feel free to play with this ratio
 
   hw_ratio1 = 0.5;
-% 
-% if exist('l','var')
-%     if ~isempty(strfind(l.Location,'outside'))
-%         hw_ratio1 = 0.5;
-% 
-%     else
-%     hw_ratio1 = 0.5;
-%     end
-% end
 
 set(findall(hfig,'-property','FontSize'),'FontSize',16) % adjust fontsize to your document
 
