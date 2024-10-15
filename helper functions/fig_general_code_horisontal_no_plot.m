@@ -1,4 +1,7 @@
-cd('C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig');
+%Location
+if ~contains(pwd,strcat(selpath,'/figures'))
+    cd([selpath,'/figures']);
+end
 
 %cd([C:\Users\sasha.eremina\Documents\MATLAB\Thesis_fig\Chapt4]);
 
