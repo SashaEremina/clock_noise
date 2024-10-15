@@ -1,4 +1,18 @@
-%% Fig. 2 latest design
+%establish a path:
+selpath=uigetdir; %please, specify the location where all the code is saved
+
+%make a directory for saving all figures
+cd(selpath)
+if ~isfolder('figures')
+    mkdir figures
+end
+
+%make a directory for saving fig1 subfigures
+cd([selpath,'/figures'])
+if ~isfolder('fig2')
+    mkdir fig2
+end
+%% Fig. 2
 
 %Fig.2A - a schematic
 
