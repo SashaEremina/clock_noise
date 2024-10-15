@@ -1,4 +1,3 @@
-%Location
 if ~contains(pwd,strcat(selpath,'/figures'))
     cd([selpath,'/figures']);
 end
