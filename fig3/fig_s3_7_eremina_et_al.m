@@ -1,4 +1,7 @@
-clear all; close all;
+close all;
+clearvars -except selpath;
+
+%%
 
 figure(1)
 subplotLayout = [2,2];
@@ -39,17 +42,16 @@ cc=cc/255;
 %% Plotting:
 
 %KaiC-R215C - high LL
+cd([selpath, '/data/datasets/KaiC-R215C_high_LL_rep2']);
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\KaiC-R215C_high_LL_rep2']);
-
-MY=readmatrix('22-Apr-2024_KaiC-R215C_2024_mother_mean_fluor.csv');
+MY=readmatrix('KaiC-R215C_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('22-Apr-2024_KaiC-R215C_2024_time_adjusted.csv');
+time_adjusted1=readmatrix('KaiC-R215C_time_adjusted.csv');
 
 
 time_adjusted=NaN(300,1000);
@@ -96,16 +98,16 @@ xlabel('Time (h)');
 
 %% KaiC med LL
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\KaiC-R215C_med_LL_rep1']);
+cd([selpath, '/data/datasets/KaiC-R215C_med_LL_rep1']);
 
-MY=readmatrix('29-Mar-2022_KaiC-R215C_mother_mean_fluor.csv');
+MY=readmatrix('KaiC-R215C_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('29-Mar-2022_KaiC-R215C_time_adjusted.csv');
+time_adjusted1=readmatrix('KaiC-R215C_time_adjusted.csv');
 
 
 time_adjusted=NaN(300,1000);
@@ -149,10 +151,10 @@ end
 
 %% Pt 2 - ACFs
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance']);
+cd([selpath, '/data/meanautocovariance']);
 
-A_hLL = readmatrix('autocov_ΔKaiC-R215C (1) [high LL].csv'); %high LL repeat
-A_mLL= readmatrix('autocov_ΔKaiC-R215C [LL].csv'); %med LL
+A_hLL = readmatrix('autocov_KaiC-R215C (2) [high LL].csv'); %high LL repeat (was (1))
+A_mLL= readmatrix('autocov_KaiC-R215C [LL].csv'); %med LL
 
 %autocov -> acf
 A_hLL(:,2)=A_hLL(:,2)./max(A_hLL(:,2));
@@ -162,16 +164,16 @@ hold on;
 
 subplot(2,2,4);
 p1=plot(A_hLL(:,1),A_hLL(:,2),'DisplayName','KaiC-R215C high LL'); hold on
-p1.LineWidth=[3]; p1.Color=cc(2,:);
+p1.LineWidth=3; p1.Color=cc(2,:);
 
-xlim([-72 72]); xticks([-96:24:96]); xtickangle(45)
+xlim([-72 72]); xticks(-96:24:96); xtickangle(45)
 ylim([-1.2 1.2]); xlabel('Lag (h)'); ylabel ('Autocorrelation')
 
 subplot(2,2,2);
 p2=plot(A_mLL(:,1),A_mLL(:,2),'DisplayName','KaiC-R215C med LL'); hold on
-p2.LineWidth=[3]; p2.Color=cc(3,:);
+p2.LineWidth=3; p2.Color=cc(3,:);
 
-xlim([-72 72]); xticks([-96:24:96]); xtickangle(45)
+xlim([-72 72]); xticks(-96:24:96); xtickangle(45)
 ylim([-1.2 1.2]); ylabel ('Autocorrelation')
 
 %% Figure styling
@@ -186,8 +188,8 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_7';
 fig_save_font_20;
 

@@ -1,6 +1,8 @@
-close all; clear all;
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\traces_Fig4']);
-%folder naming is confusing - we are in Fig.3
+close all;
+clearvars -except selpath;
+
+%% 
+cd([selpath, '/simulations/traces_Fig3']);
 
 %LL low
 D=dir('*LLtrace.low*');
@@ -53,7 +55,7 @@ legend ([t(3) t(4)],'NumColumns',2)
 ylabel({'KaiC-P', 'level (normalised)'})
 title ('Simulations under LL');
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving - disabled
+cd([selpath,'/figures/fig3']);
 fname='fig3C';
 fig_save_font_20;

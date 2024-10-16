@@ -1,10 +1,12 @@
-close all; clear all; 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance']);
+close all;
+clearvars -except selpath;
+
+cd([selpath, '/data/meanautocovariance']);
 
 %% Top panel
-A_R215C = readmatrix('autocov_ΔKaiC-R215C (1) [high LL].csv'); %rename - which one, (1) or (2)?
-A_T495A= readmatrix('autocov_ΔKaiC-T495A [high LL].csv'); %rename
-WTh=readmatrix('autocov_WT (ΔKaiC-R215C) [high LL].csv'); %rename
+A_R215C = readmatrix('autocov_KaiC-R215C (1) [high LL].csv'); %rename - which one, (1) or (2)?
+A_T495A= readmatrix('autocov_KaiC-T495A [high LL].csv');
+WTh=readmatrix('autocov_WT [high LL].csv');
 
 %color scheme
 cc=[254,237,222;
@@ -25,25 +27,20 @@ p1=plot(WTh(:,1),WTh(:,2),'m','DisplayName','WT high LL'); hold on
 p2=plot(A_R215C(:,1),A_R215C(:,2),'b','DisplayName','KaiC-R215C high LL'); hold on
 p3=plot(A_T495A(:,1),A_T495A(:,2),'k','DisplayName','KaiC-T495A high LL'); hold on
 
-p1.LineWidth=[3];
-p2.LineWidth=[3]; p2.Color=cc(2,:);
-p3.LineWidth=[3]; p3.Color=cc(3,:);
+p1.LineWidth=3;
+p2.LineWidth=3; p2.Color=cc(2,:);
+p3.LineWidth=3; p3.Color=cc(3,:);
 l=legend([p1 p2 p3],'Location','NorthEastoutside');
 
-xlim([-102 102]); xticks([-96:24:96]); xtickangle(45)
+xlim([-102 102]); xticks(-96:24:96); xtickangle(45);
 ylim([-1.2 1.2]);
 
 xlabel('Lag (h)')
 
 %% Bottom panel
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance\old'])
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance_old']);
-%uploading from an old dropbox version is not working
+clearvars -except selpath;
 
-%cd(['D:\From PC\MATLAB\philipp_data\meanautocovariance']); %2023 still not
-%working...
-
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\meanautocovariance']);
+cd([selpath, '/data/meanautocovariance']);
 
 %color scheme
 c=[254,235,226;
@@ -56,7 +53,7 @@ c=c/255;
 %A_SP16 = readmatrix('autocov_ΔKaiC-R393C [LL].csv');
 %A_LP48= readmatrix('autocov_ΔKaiC-A251V [LL].csv');
 
-A_SP16 = readmatrix('autocov_KaiC-R393C [LL].csv');
+A_SP16 = readmatrix('autocov_KaiC-R393C (2) [LL].csv'); %not 1
 A_LP48= readmatrix('autocov_KaiC-A251V [LL].csv');
 
 %autocov -> ACF
@@ -65,10 +62,10 @@ A_LP48(:,2)=A_LP48(:,2)./max(A_LP48(:,2));
 
 
 %Finding periods of an individual lineage
-[pks1 locs1]=findpeaks(A_SP16(:,2));
+[pks1, locs1]=findpeaks(A_SP16(:,2));
 st1=mean(diff(locs1))*0.75; %0.75 is an imaging frequency (45 min)
 
-[pks2 locs2]=findpeaks(A_LP48(:,2));
+[pks2, locs2]=findpeaks(A_LP48(:,2));
 st2=mean(diff(locs2))*0.75; 
 
 st4=24; 
@@ -78,20 +75,17 @@ subplot(2,1,2);
 p2=plot(A_SP16(:,1)*st4/st1,A_SP16(:,2),'--','DisplayName','SP16 medium LL'); hold on; 
 p3=plot(A_LP48(:,1)*st4/st2,A_LP48(:,2),'k--','DisplayName','LP48 medium LL ');
 
-%xticks([-96:24:96]); xlim([-96 96]);
-%xticklabels({'4','3','2','1','0','1','2','3','4'});
+xticks(-96:24:96); xlim([-96 96]);
+xticklabels({'4','3','2','1','0','1','2','3','4'});
 
-xticks([-72:24:72]); xlim([-72 72]);
-xticklabels({'3','2','1','0','1','2','3'});
 xtickangle(45);
 
-p2.LineWidth=[3]; p2.Color=c(2,:);
-p3.LineWidth=[3]; p3.Color=c(4,:);
+p2.LineWidth=3; p2.Color=c(2,:);
+p3.LineWidth=3; p3.Color=c(4,:);
 
 l=legend([p3 p2],'Location','NorthEastoutside');
 
 xlabel ('Lag/period');
-%ylim([-1.2 1.2])
 
 
 %% Figure styling
@@ -104,7 +98,7 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
-fname='fig3B_older';
+%% Saving
+cd([selpath,'/figures/fig3']);
+fname='fig3B';
 fig_save_font_20;

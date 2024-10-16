@@ -1,5 +1,8 @@
-close all; clear all;
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\trajectories']);
+close all;
+clearvars -except selpath;
+
+%% 
+cd([selpath, '/simulations/posterior-Fig3/trajectories']);
 DD=dir('sensitivity3*');
 
 dd2=readmatrix(DD(1).name);
@@ -9,7 +12,7 @@ Tcv2=NaN(length(dd2),length(DD)); %traces
 for i=1:length(DD)
     dd2=readmatrix(DD(i).name);
     Tp2(1:length(dd2),i)=dd2(:,1);
-    Tcv2(1:length(dd2),i)=dd2(:,2); %
+    Tcv2(1:length(dd2),i)=dd2(:,2);
 end
 
 
@@ -20,20 +23,20 @@ p(2)=plot(NaN,NaN,'LineWidth',3,'Color',g,'DisplayName','model');
 
 %% error bars
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\p2pstats_errorbars']);
+cd([selpath, '/data/p2pstats_errorbars']);
 
-WT_ml=readmatrix('p2pstats_bootstrap_WT (ΔKaiBC) [LL].csv');
-WT_ll=readmatrix('p2pstats_bootstrap_WT (ΔKaiBC) [low LL].csv');
-WT_hl=readmatrix('p2pstats_bootstrap_WT (ΔKaiC-R215C) [high LL].csv');
+WT_ml=readmatrix('p2pstats_bootstrap_WT [LL].csv');
+WT_ll=readmatrix('p2pstats_bootstrap_WT [low LL].csv');
+WT_hl=readmatrix('p2pstats_bootstrap_WT [high LL].csv');
 
-WT_ab=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C (no mutation) [LL].csv');
+WT_ab=readmatrix('p2pstats_bootstrap_WT-Ab [LL].csv');
 
-T495A=readmatrix('p2pstats_bootstrap_ΔKaiC-T495A [high LL].csv');
-R215C=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C (1) [high LL].csv');
-R215C_m=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C [LL].csv');
+T495A=readmatrix('p2pstats_bootstrap_KaiC-T495A [high LL].csv');
+R215C=readmatrix('p2pstats_bootstrap_KaiC-R215C (1) [high LL].csv');
+R215C_m=readmatrix('p2pstats_bootstrap_KaiC-R215C [LL].csv');
 
-SP16=readmatrix('p2pstats_bootstrap_ΔKaiC-R393C [LL].csv'); 
-LP48=readmatrix('p2pstats_bootstrap_ΔKaiC-A251V [LL].csv');
+SP16=readmatrix('p2pstats_bootstrap_KaiC-R393C [LL].csv'); 
+LP48=readmatrix('p2pstats_bootstrap_KaiC-A251V [LL].csv');
 
 
 % calculating noise
@@ -129,7 +132,7 @@ end
 
 legend ([hh,h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig3D';
 fig_save_font_20;

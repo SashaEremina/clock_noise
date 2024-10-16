@@ -1,4 +1,5 @@
-clear all; close all;
+close all;
+clearvars -except selpath;
 
 %establishing the color palette 
 cc=[254,237,222;
@@ -9,16 +10,16 @@ cc=[254,237,222;
 cc=cc/255;
 
 %% Plotting:
-%KaiC-R215C OLD
+%KaiC-R215C OLD - IS THIS THE RIGHT DATASET?
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-R215C_high_LL_rep1'])
-MY=readmatrix('29-Mar-2022_KaiC-R215C_mother_mean_fluor.csv');
+cd([selpath, '/data/datasets/KaiC-R215C_high_LL_rep1']);
+MY=readmatrix('KaiC-R215C_mother_mean_fluor.csv');
  
 %background subtraction
 MY=MY-200;
  
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
-time_adjusted1=readmatrix('29-Mar-2022_KaiC-R215C_time_adjusted.csv');
+time_adjusted1=readmatrix('KaiC-R215C_time_adjusted.csv');
 
 
 time_adjusted=NaN(300,1000);
@@ -63,15 +64,15 @@ end
 title('KaiC-R215C high LL'); set(gca,'Fontsize', 9);
 
 %% WT
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-R215C_high_LL_rep1']);
-MY=readmatrix('29-Mar-2022_WT-reporter_mother_mean_fluor.csv');
+cd([selpath, '/data/datasets/WT_high_LL']);
+MY=readmatrix('WT-reporter_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-200;
  
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('29-Mar-2022_WT-reporter_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-reporter_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -121,16 +122,16 @@ title('WT high LL'); set(gca,'Fontsize', 9);
 
 %% KaiC-T495A
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-T495A_high_LL_rep1'])
+cd([selpath, '/data/datasets/KaiC-T495A_high_LL_rep1']);
 
-MY=readmatrix('29-Mar-2022_KaiC-T495A_mother_mean_fluor.csv');
+MY=readmatrix('KaiC-T495A_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-200;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('29-Mar-2022_KaiC-T495A_time_adjusted.csv');
+time_adjusted1=readmatrix('KaiC-T495A_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -179,16 +180,15 @@ title('KaiC-T495A high LL'); set(gca,'Fontsize', 9);
 
 %% LP48
 
-%cd(['D:\from_CSCS\microscope\Sasha\2022-10-26-cyano2-prime\subAuto\Data']);
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-A251V_med_LL']);
-MY=readmatrix('05-Dec-2022_LP48_mother_mean_fluor.csv');
+cd([selpath, '/data/datasets/KaiC-A251V_med_LL']);
+MY=readmatrix('LP48_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('05-Dec-2022_LP48_time_adjusted.csv');
+time_adjusted1=readmatrix('LP48_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -210,7 +210,7 @@ D=dir('waveform*');
 if ~isempty(D)
     load('waveform_lp48.mat')
 else
-    waveform_lp48;
+    waveform_lp48; %lp48 is the input
 end
 
 t1=[]; %first trough
@@ -271,17 +271,16 @@ title('LP48 medium LL'); set(gca,'Fontsize', 9);
 
 %% SP16
 
+cd([selpath, '/data/datasets/KaiC-R393C_med_LL_rep2']); 
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\clock_robust_fig\datasets_for_plotting\KaiC-R393C_med_LL_rep1']);
-
-MY=readmatrix('10-Jan-2023_SP16_mother_mean_fluor.csv');
+MY=readmatrix('SP16_2_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('10-Jan-2023_SP16_time_adjusted.csv');
+time_adjusted1=readmatrix('SP16_2_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -292,7 +291,7 @@ D=dir('waveform*');
 if ~isempty(D)
     load('waveform_sp16.mat')
 else
-    waveform_sp16;
+    waveform_sp16; %sp16 is the input
 end
 
 
@@ -366,7 +365,7 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_2';
 fig_save_font_20;

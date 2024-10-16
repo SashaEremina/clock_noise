@@ -1,15 +1,16 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\WT_Ab_medium_LL'])
+%% 
+cd([selpath, '/data/datasets/WT_Ab_medium_LL']);
 
-MY=readmatrix('29-Mar-2022_KaiC-R215C_no_mutation_mother_mean_fluor.csv');
+MY=readmatrix('WT-Ab_mother_mean_fluor.csv');
 
-%remove afterwards
-MY=MY-300;
+MY=MY-300; %background subtraction
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('29-Mar-2022_KaiC-R215C_no_mutation_time_adjusted.csv');
+time_adjusted1=readmatrix('WT-Ab_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
@@ -49,8 +50,9 @@ ylabel('Fluorescence (a.u.)')
 
 %% Adding autocovariance panel
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\meanautocovariance'])
-ACV=readmatrix('autocov_ΔKaiC-R215C (no mutation) [LL].csv');
+cd([selpath, '/data/meanautocovariance']);
+
+ACV=readmatrix('autocov_WT-Ab [LL].csv');
 
 %autocov -> ACF
 ACV(:,2)=ACV(:,2)./max(ACV(:,2));
@@ -59,17 +61,17 @@ hold on; %plotting average
 subplot(2,1,2)
 p1=plot(ACV(:,1),ACV(:,2),'m'); hold on
 
-p1.LineWidth=[3];
+p1.LineWidth=3;
 ylim([-1.5 1.5]);
 
-xticks([-72:24:72]); %xtickangle(45)
+xticks(-72:24:72); %xtickangle(45)
 xlim([- 72 72])
 
 xlabel('Lag (h)')
 ylabel('Autocorrelation')
 
 
-%%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_1';
 fig_save_font_20;

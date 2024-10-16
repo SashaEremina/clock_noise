@@ -1,6 +1,8 @@
-close all; clear all
+close all;
+clearvars -except selpath;
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\posterior-parameters']);
+%% 
+cd([selpath, '/simulations/posterior-Fig3/posterior-parameters']);
 
 k_abc=readmatrix('posteriordist_k_ABC.csv');
 k_dephos=readmatrix('posteriordist_k_dephos.csv');
@@ -8,7 +10,10 @@ k_off=readmatrix('posteriordist_k_off.csv');
 k_on=readmatrix('posteriordist_k_on.csv');
 k_phos=readmatrix('posteriordist_k_phos.csv');
 
-figure; fig_general_code_horisontal_no_plot;
+figure; 
+cd([selpath,'/figures/fig3']);
+fig_general_code_horisontal_no_plot;
+
 hold on; subplot(1,5,5); plot(k_abc(:,1),k_abc(:,2),'linewidth',2);
 xticks(0:2:10); yticks (0:0.05:0.3); xtickangle(45);
 xlabel('$k_{ABC}(h^{-1})$');
@@ -34,8 +39,8 @@ xticks(0:0.2:0.8); yticks (0:0.5:2.5); xtickangle(45);
 xlabel('$k_{dephos}(h^{-1})$');
 ylabel('posterior');
 
-%Saving
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_5';
 
 fig_save_horizontal;

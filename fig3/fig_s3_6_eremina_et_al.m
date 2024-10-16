@@ -1,4 +1,7 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
+
+%%
 
 %Establishing a color scheme
 
@@ -17,8 +20,8 @@ c=[254,235,226;
 c=c/255;
 
 %% Perturbation trajectories, k_phos
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\simulations\trajectories\smoothed\old']);
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\trajectories']);
+
+cd([selpath, '/simulations/posterior-Fig3/trajectories']);
 
 D=dir('sensitivity1*');
 
@@ -47,22 +50,22 @@ ylabel('C.V.');
 
 %% error bars
 
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\p2pstats\errorbars']);
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\p2pstats_errorbars']);
+cd([selpath, '/data/p2pstats_errorbars']);
 
-WT_ml=readmatrix('p2pstats_bootstrap_WT (ΔlalA) [LL].csv');
-WT_ll=readmatrix('p2pstats_bootstrap_WT (ΔKaiBC) [low LL].csv');
-WT_hl=readmatrix('p2pstats_bootstrap_WT (ΔKaiC-R215C) [high LL].csv');
 
-WT_ab=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C (no mutation) [LL].csv');
+WT_ml=readmatrix('p2pstats_bootstrap_WT [LL].csv');
+WT_ll=readmatrix('p2pstats_bootstrap_WT [low LL].csv');
+WT_hl=readmatrix('p2pstats_bootstrap_WT [high LL].csv');
 
-T495A=readmatrix('p2pstats_bootstrap_ΔKaiC-T495A [high LL].csv');
-SP16=readmatrix('p2pstats_bootstrap_ΔKaiC-R393C [LL].csv'); 
-LP48=readmatrix('p2pstats_bootstrap_ΔKaiC-A251V [LL].csv');
+WT_ab=readmatrix('p2pstats_bootstrap_WT-Ab [LL].csv');
+
+T495A=readmatrix('p2pstats_bootstrap_KaiC-T495A [high LL].csv');
+SP16=readmatrix('p2pstats_bootstrap_KaiC-R393C [LL].csv'); 
+LP48=readmatrix('p2pstats_bootstrap_KaiC-A251V [LL].csv');
 
 %cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\p2pstats\errorbars\new']);
-R215C_h=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C (1) [high LL].csv');
-R215C_m=readmatrix('p2pstats_bootstrap_ΔKaiC-R215C [LL].csv');
+R215C_h=readmatrix('p2pstats_bootstrap_KaiC-R215C (1) [high LL].csv');
+R215C_m=readmatrix('p2pstats_bootstrap_KaiC-R215C [LL].csv');
 
 % calculating noise
 WT_m_cv=sqrt(WT_ml(2,3))/WT_ml(2,2);
@@ -124,16 +127,15 @@ end
 
 legend ([p(1), p(2),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving 
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_6A';
 fig_save_font_20;
 
 %% Perturbation trajectories  - KaiA binding
 close all;
 
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\simulations\trajectories\smoothed\old\updated']);
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\trajectories']);
+cd([selpath, '/simulations/posterior-Fig3/trajectories']);
 
 hold on;
 DD=dir('sensitivity2*');
@@ -206,17 +208,16 @@ end
 
 legend ([p(2), p(1),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_6B';
 fig2_save_font_20;
 
-
-%% Updated figure on incluse dephosph and unbinding rates
-close all; 
+ 
 
 %% Perturbation trajectories  - KaiA unbinding
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\trajectories']);
+close all;
+cd([selpath, '/simulations/posterior-Fig3/trajectories']);
 
 hold on;
 DD=dir('sensitivity4.smooth*');
@@ -289,8 +290,8 @@ end
 
 legend ([p(2), p(1),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_6D';
 fig2_save_font_20;
 
@@ -298,7 +299,7 @@ fig2_save_font_20;
 %% Perturbation trajectories  -  k-dephosph
 close all;
 
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\posterior-Fig3\trajectories']);
+cd([selpath, '/simulations/posterior-Fig3/trajectories']);
 
 hold on;
 DD=dir('sensitivity3.smooth*');
@@ -315,7 +316,7 @@ end
 
 g=[.6 .6 .6];
 
-Tp2(Tp2==0)=NaN; %ASK Philipp to fix
+Tp2(Tp2==0)=NaN;
 
 figure;
 hold on;
@@ -373,7 +374,7 @@ end
 
 legend ([p(2), p(1),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_6C';
 fig2_save_font_20;

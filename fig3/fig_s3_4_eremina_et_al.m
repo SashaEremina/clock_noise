@@ -1,4 +1,7 @@
-close all; clear all
+close all;
+clearvars -except selpath;
+
+%% 
 
 %establishing the color palette
 cc=[254,237,222;
@@ -16,13 +19,13 @@ c=[254,235,226;
 c=c/255;
 
 %import the data
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\robustness']);
+cd([selpath, '/data/robustness']);
 
-WT2=readmatrix('robustness_WT (ΔKaiC-R215C) [high LL].csv');
-r215c=readmatrix('robustness_ΔKaiC-R215C (1) [high LL].csv'); %(1) or (2)?
-t495a=readmatrix('robustness_ΔKaiC-T495A [high LL].csv');
-r393c=readmatrix('robustness_ΔKaiC-R393C [LL].csv'); %(1) or (2)?
-a251v=readmatrix('robustness_ΔKaiC-A251V [LL].csv');
+WT2=readmatrix('robustness_WT [high LL].csv');
+r215c=readmatrix('robustness_KaiC-R215C (1) [high LL].csv');
+t495a=readmatrix('robustness_KaiC-T495A [high LL].csv');
+r393c=readmatrix('robustness_KaiC-R393C (1) [LL].csv');
+a251v=readmatrix('robustness_KaiC-A251V [LL].csv');
 
 %% Plotting
 %Establishing the figure structure
@@ -50,14 +53,12 @@ titles = {'WT2', 'SP16','KaiC-R215C','LP48','KaiC-T495A'};
 titleHandles = gobjects(numel(titles),1); 
 
 %% Pt1 - Phase diffusion time
-%w1=(1./[WT1(:,3)'])/24; 
-w2=(1./[WT2(:,3)'])/24; 
-w3=(1./[a251v(:,3)'])/24; 
-w4=(1./[r393c(:,3)'])/24; 
-w5=(1./[r215c(:,3)'])/24;
-w6=(1./[t495a(:,3)'])/24; 
+w2=(1./(WT2(:,3)'))/24; 
+w3=(1./(a251v(:,3)'))/24; 
+w4=(1./(r393c(:,3)'))/24; 
+w5=(1./(r215c(:,3)'))/24;
+w6=(1./(t495a(:,3)'))/24; 
 
-%subplot(6,2,3); h(1)=histogram(w1,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'WT','Units','normalized');
 subplot(5,2,1); h(2)=histogram(w2,'Normalization', 'probability'); hold on; yticks(0:0.2:0.2); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'WT','Units','normalized');
 subplot(5,2,7); h(3)=histogram(w4,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'SP16','Units','normalized');
 subplot(5,2,3); h(4)=histogram(w5,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.3]); text(0.35,0.6,'KaiC-R215C','Units','normalized')
@@ -65,7 +66,6 @@ subplot(5,2,9); h(5)=histogram(w3,'Normalization', 'probability'); hold on; ytic
 xlabel('Phase diffusion time (d)'); hold on;
 subplot(5,2,5); h(6)=histogram(w6,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.3]); text(0.35,0.6,'KaiC-T495A','Units','normalized') ;
 
-%h(1).FaceColor = [1 0 1];
 h(2).FaceColor= cc(1,:);
 h(3).FaceColor= c(3,:);
 
@@ -85,33 +85,28 @@ end
 
 %% Pt2 - Autocorrelation time
 
-%autocorrelation time
-%w1=(2./[WT1(:,2)'])/24; 
-%w1=rmoutliers(w1,'percentiles',[0 82]);
-
-w2=(2./[WT2(:,2)'])/24; 
+w2=(2./(WT2(:,2)'))/24; 
 w2=rmoutliers(w2,'percentiles',[0 82]);
 
-w3=(2./[a251v(:,2)'])/24; 
+w3=(2./(a251v(:,2)'))/24; 
 w3=rmoutliers(w3,'percentiles',[0 80]);
 
-w4=(2./[r393c(:,2)'])/24; 
+w4=(2./(r393c(:,2)'))/24; 
 w4=rmoutliers(w4,'percentiles',[0 99]);
 
-w5=(2./[r215c(:,2)'])/24;
+w5=(2./(r215c(:,2)'))/24;
 w5=rmoutliers(w5,'percentiles',[0 86]);
 
-w6=(2./[t495a(:,2)'])/24; 
+w6=(2./(t495a(:,2)'))/24; 
 
-%subplot(6,2,4); h(1)=histogram(w1,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
 subplot(5,2,2); h(2)=histogram(w2,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
 subplot(5,2,8); h(3)=histogram(w4,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
 subplot(5,2,4); h(4)=histogram(w5,'Normalization', 'probability'); hold on; xticks(0:25:100); xlim([0 100]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
 subplot(5,2,10); h(5)=histogram(w3,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
+
 xlabel('Autocorrelation time (d)'); hold on;
 subplot(5,2,6); h(6)=histogram(w6,'Normalization', 'probability'); hold on; xticks(0:25:100); xlim([0 100]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
 
-%h(1).FaceColor = [1 0 1];
 h(2).FaceColor= cc(1,:);
 h(3).FaceColor= c(3,:);
 
@@ -138,7 +133,7 @@ han.YLabel.Visible='on';
 ylabel(han,'Probability'); 
 han.YLabel.Position(1)=han.YLabel.Position(1)*1.4;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig3']);
+%% Saving
+cd([selpath,'/figures/fig3']);
 fname='fig_s3_4';
 fig_save_font_20;
