@@ -161,7 +161,7 @@ ylabel({'Fluorescence (a.u.)'});
 
 
 %% Pt 2 - bottom panel, simulations
-cd([selpath, '/simulations/traces_Fig4']);
+cd([selpath, '/simulations/traces_Fig3']);
 
 %LD low
 D=dir('*LDtrace.low*');
