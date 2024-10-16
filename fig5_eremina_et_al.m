@@ -7,7 +7,7 @@ if ~isfolder('figures')
     mkdir figures
 end
 
-%make a directory for saving fig1 subfigures
+%make a directory for saving fig5 subfigures
 cd([selpath,'/figures'])
 if ~isfolder('fig5')
     mkdir fig5
@@ -18,7 +18,7 @@ end
 fig5A_eremina_et_al;
 
 %Fig.5B - clock buffers noise in the environment
-fig5B_eremina_et_al; %check for the x-axis shift
+fig5B_eremina_et_al;
 
 %% Supplementary
 

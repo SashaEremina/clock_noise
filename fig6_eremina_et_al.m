@@ -7,7 +7,7 @@ if ~isfolder('figures')
     mkdir figures
 end
 
-%make a directory for saving fig1 subfigures
+%make a directory for saving fig6 subfigures
 cd([selpath,'/figures'])
 if ~isfolder('fig6')
     mkdir fig6
