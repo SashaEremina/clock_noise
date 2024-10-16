@@ -9,9 +9,9 @@ acf20=acf(46,1:245);
 acf20=acf20(:,19:227); %to match the size of the time vector
 
 figure;
-h(1)=plot(t,acf20,'b','DisplayName','Fit');
+h(1)=plot(t,acf20,'b','DisplayName','fit');
 hold on;
-h(2)=plot(t,acf20,'b*','DisplayName','Data');
+h(2)=plot(t,acf20,'b*','DisplayName','data');
 
 xl=find(t==-0.8);
 
@@ -30,7 +30,7 @@ plot(time(locs),pks,'ro');
 
 p = polyfit(locs,log(pks),1);
 curve_fit = exp(polyval(p,time));
-h(3)=plot(time,curve_fit,'--g','LineWidth',2,'DisplayName','Damping curve');
+h(3)=plot(time,curve_fit,'--g','LineWidth',2,'DisplayName','damping curve');
 
 xlim([-100 100]);
 xticks(-120:24:120);

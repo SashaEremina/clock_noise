@@ -18,7 +18,7 @@ p=patchline(time_adjusted(st:end,:),MY_smooth(st:end,:),'EdgeColor','b','EdgeAlp
 
 hold on; 
 %an example of a single-cell trace highlighted
-h(2)=plot(time_adjusted(st:end,13),MY_smooth(st:end,13),'b','LineWidth',2,'DisplayName','Representative lineage');
+h(2)=plot(time_adjusted(st:end,13),MY_smooth(st:end,13),'b','LineWidth',2,'DisplayName','representative lineage');
 legend(h(2));
 
 %axes boundaries

@@ -19,9 +19,9 @@ p=patchline(time_adjusted(st:end,:),len_smooth(st:end,:),'EdgeColor','b','EdgeAl
 a=13; %use to be 12
 y=len_smooth(:,a);
 x=time_adjusted(:,a)';
-h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','Representative lineage');
+h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','representative lineage');
 [vals,inds]=findpeaks(y(st:find(~isnan(y), 1, 'last' )-1),x(st:find(~isnan(y), 1, 'last' )-1)');
-hold on; h(3)=plot(inds, vals,'bv','LineWidth',2,'MarkerSize',6,'DisplayName','Divisions detected');
+hold on; h(3)=plot(inds, vals,'bv','LineWidth',2,'MarkerSize',6,'DisplayName','divisions detected');
 
 yl_1=min(y)*0.8;
 yl_2=max(y)*1.2;

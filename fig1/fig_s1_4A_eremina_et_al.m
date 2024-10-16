@@ -40,12 +40,12 @@ f(1)=plot(xS, y5,'--','DisplayName','Sine fit','LineWidth',1,'Color',colorblind(
 
 inst_phase = angle(yh);
 inst_phase_n=normalize(inst_phase,'range');
-hold on; f(2)=plot(t,inst_phase_n,'DisplayName','Phase ({\it $\phi$(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
+hold on; f(2)=plot(t,inst_phase_n,'DisplayName','phase ({\it $\phi$(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
 
 inst_amplitude = abs(yh);
-hold on; f(3)=plot(t,inst_amplitude,'DisplayName','Amplitude ({\it a(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
+hold on; f(3)=plot(t,inst_amplitude,'DisplayName','amplitude ({\it a(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
 
-hold on; f(4)=plot(t,MY_tn,'DisplayName','Fluorescence ({\it x(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
+hold on; f(4)=plot(t,MY_tn,'DisplayName','fluorescence ({\it x(t)})','LineWidth',1,'Color',colorblind(ii,:)); ii=ii+1;
 
 %%Titles, legends, axis
 l=legend(f([2 3 4 1]),'Location','bestoutside'); 
