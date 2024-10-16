@@ -4,7 +4,7 @@ clearvars -except selpath;
 %% Pt1: Square and Smooth
 %Loading the data
 d=[1 2 3 4 5];
-cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig']);
 
 c1_sm=readmatrix('LDsim_car1_smoothed.csv');
 c1_sq=readmatrix('LDsim_car1_square.csv');
@@ -48,7 +48,7 @@ han.YLabel.Position=y1;
 %% Part 2:  Natural and Experiment
 %Loading the data
 
-cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig']);
 ndc1_sim=readmatrix('LDsim_carr1.csv');
 ndc2_sim=readmatrix('LDsim_carr2.csv');
 ndc1_exp=readmatrix('LDexp_carr1.csv');

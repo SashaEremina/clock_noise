@@ -18,7 +18,7 @@ hold on;
 subplot(2,1,1); 
 p(3)=errorbar(v+0.05,ndc1_sim(:,1),ndc1_sim(:,1).*ndc1_sim(:,2),'ob','LineWidth',1); hold on;
 dd(3)=errorbar(v-0.05,ndc1_exp(:,1),ndc1_exp(:,1).*ndc1_exp(:,2),'om','LineWidth',1); hold on;
-xlabel('Day ($\#$)'); 
+%xlabel('Day ($\#$)'); 
 ylim([3 7]); yticks(4:1:8); xlim([0.1 5.5]); xticks(1:5);
 title('Caribbean 1');
 
@@ -38,7 +38,7 @@ for pp=3:4
     dd(pp).MarkerSize=4; dd(pp).MarkerFaceColor=dd(pp).MarkerEdgeColor;
 end
 
-legend({'Simulation', 'Experiment'},'Location','SouthEast')
+legend({'simulation', 'experiment'},'Location','SouthEast')
 
 %% Figure styling
 ax = axes(figure (1));

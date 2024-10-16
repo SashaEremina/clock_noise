@@ -67,7 +67,7 @@ h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
 set(h(1),'facealpha',.3);
 
 hold on; 
-h(2)=plot(time_adjusted(st:end,16),MY_smooth(st:end,16),'m','LineWidth',2,'DisplayName',sprintf('Representative \n lineage'));
+h(2)=plot(time_adjusted(st:end,16),MY_smooth(st:end,16),'m','LineWidth',2,'DisplayName',sprintf('representative \n lineage'));
 
 xlim([- 12 120]); ylim([0 750]); yticks(0:250:750)
 xticks(0:24:120); 
@@ -147,7 +147,7 @@ h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
 set(h(1),'facealpha',.3);
 
 hold on; 
-h(2)=plot(time_adjusted(st:end,20),MY_smooth(st:end,20),'m','LineWidth',2,'DisplayName','Representative lineage');
+h(2)=plot(time_adjusted(st:end,20),MY_smooth(st:end,20),'m','LineWidth',2,'DisplayName','representative lineage');
 
 %Figure styling, botom panel
 xlim([-12 120]); xticks(0:24:120); 

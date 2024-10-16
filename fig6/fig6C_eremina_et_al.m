@@ -3,7 +3,7 @@ clearvars -except selpath;
 
 
 %% Pt 1 - plotting the environments
-cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig']);
 
 
 %Plotting the environments: Caribbean 1
@@ -30,7 +30,7 @@ xlim([-12 120]); xticks(0:24:120);
 ylim([0 90]); yticks(0:15:90);
 
 %% Plotting the environments: Caribbean 2
-cd([selpath, '/simulations/noiseaveraging_SupplFig/new']);
+cd([selpath, '/simulations/noiseaveraging_SupplFig']);
 c2_sm=readmatrix('caribbean2_smoothed.csv');
 c2_sq=readmatrix('caribbean2_square.csv');
 
