@@ -3,7 +3,7 @@ clearvars -except selpath;
 
 %%
 cd([selpath, '/data/acfs']);
-t=readmatrix('acf_time_WT.csv');
+t=readmatrix('acf_time_WT [LL].csv');
 acf=readmatrix('acf_WT [LL].csv');
 acf20=acf(46,1:245);
 acf20=acf20(:,19:227); %to match the size of the time vector
