@@ -16,7 +16,7 @@ st=find(time_adjusted(:,1)==0);
 p=patchline(time_adjusted(st:end,:),len_smooth(st:end,:),'EdgeColor','b','EdgeAlpha',0.2);
 
 %an example of a single-cell trace highlighted
-a=12;
+a=7; %use to be 12
 y=len_smooth(:,a);
 x=time_adjusted(:,a)';
 h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','Representative lineage');
