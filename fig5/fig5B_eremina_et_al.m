@@ -36,7 +36,7 @@ T = table(d,tts_a,f,tts_a-f,'VariableNames',{'X','Y','Fit','FitError'});
 round([T.FitError],2);
 
 hold on;
-h(2)=plot(d,yfit,'r-','DisplayName',strcat('Data fit $\ $  $\ $ '));
+h(2)=plot(d,yfit,'r-','DisplayName',strcat('data fit $\ $  $\ $ '));
 
 %GOF plot
 [y_fit2,i]=sort(yfit);
@@ -50,8 +50,8 @@ text(11.5, 8.5, strcat('slope=',num2str(round(P(1),2))));
 text(12.25, 7.9,'$\downarrow$');
 
 
-p(1).DisplayName='Simulation';
-dd(1).DisplayName='Experiment';
+p(1).DisplayName='simulation';
+dd(1).DisplayName='experiment';
 
 
 %% Noisy day start - plotting
@@ -82,11 +82,11 @@ yfit=polyval(P,d);
 [y_fit,delta]=polyval(P,d,S);
 f = polyval(P,d);
 
-T = table(d,tts_a,f,tts_a-f,'VariableNames',{'X','Y','Fit','FitError'});
+T = table(d,tts_a,f,tts_a-f,'VariableNames',{'X','Y','fit','FitError'});
 round([T.FitError],2);
 
 hold on;
-h(2)=plot(d,yfit,'r-','DisplayName',strcat('Data fit'));
+h(2)=plot(d,yfit,'r-','DisplayName',strcat('data fit'));
 
 hold on;
 text(0.2, 9, strcat('slope=',num2str(round(P(1),2))));
@@ -101,8 +101,8 @@ d2=d(i);
 h(3)=plot(d2,y_fit2+2*delta2,'k--','DisplayName','95\% CI');
 h(4)=plot(d2,y_fit2-2*delta2,'k--');
 
-p(2).DisplayName='Simulation';
-dd(2).DisplayName='Experiment';
+p(2).DisplayName='simulation';
+dd(2).DisplayName='experiment';
 
 legend([p(2) dd(2) h(2:3)],'NumColumns',2,'Location','SouthEast')
 

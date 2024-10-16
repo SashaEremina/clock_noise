@@ -31,12 +31,12 @@ for i = 1:numel(titles)
 end
 
 %% Loading the data
-cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig5']);
+cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig6']);
 
 nde_sim=readmatrix('LDsim_nde.csv'); 
 nds_sim=readmatrix('LDsim_nds.csv');
 
-nde_exp=readmatrix('LDexp_nde.csv'); %currently contrains an error ??
+nde_exp=readmatrix('LDexp_nde.csv'); 
 nds_exp=readmatrix('LDexp_nds.csv');
 
 %% Plotting, pt 1

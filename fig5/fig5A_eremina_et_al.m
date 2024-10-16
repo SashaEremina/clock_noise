@@ -80,7 +80,7 @@ h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
 set(h(1),'facealpha',.3);
 
 hold on; 
-h(2)=plot(time_adjusted(st:end,11),MY_smooth(st:end,11),'m','LineWidth',2,'DisplayName',sprintf('Representative \n lineage'));
+h(2)=plot(time_adjusted(st:end,11),MY_smooth(st:end,11),'m','LineWidth',2,'DisplayName',sprintf('representative \n lineage'));
 
 text(24, 0.7*max(intensity2),'$\leftarrow$ expected ');
 text(51, 0.55*max(intensity2),'$\leftarrow$ received');
@@ -173,7 +173,7 @@ h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
 set(h(1),'facealpha',.3);
 
 hold on; 
-h(2)=plot(time_adjusted(st:end,11),MY_smooth(st:end,11),'m','LineWidth',2,'DisplayName','Representative lineage');
+h(2)=plot(time_adjusted(st:end,11),MY_smooth(st:end,11),'m','LineWidth',2,'DisplayName','representative lineage');
 
 yticks(750:750:3550)
 ylim([200 max(intensity2)*0.76])
