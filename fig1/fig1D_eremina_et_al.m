@@ -6,7 +6,7 @@ end
 MY_smooth=NaN(size(MY,1),size(MY,2));
 for i=1:length(MY)
     a=find(isnan(MY(:,i)), 1 );
-    MY_smooth(1:a,i)=smooth(MY(1:a,i));
+    MY_smooth(1:a,i)=smooth(MY(1:a,i),6); %visualisation only
 end
 
 st=find(time_adjusted(:,1)==0);
@@ -18,7 +18,7 @@ p=patchline(time_adjusted(st:end,:),MY_smooth(st:end,:),'EdgeColor','b','EdgeAlp
 
 hold on; 
 %an example of a single-cell trace highlighted
-h(2)=plot(time_adjusted(st:end,7),MY_smooth(st:end,7),'b','LineWidth',2,'DisplayName','Representative lineage');
+h(2)=plot(time_adjusted(st:end,13),MY_smooth(st:end,13),'b','LineWidth',2,'DisplayName','Representative lineage');
 legend(h(2));
 
 %axes boundaries
