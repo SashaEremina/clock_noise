@@ -4,7 +4,7 @@ clearvars -except selpath;
 cd([selpath, '/data/meanautocovariance']);
 
 %% Top panel
-A_R215C = readmatrix('autocov_KaiC-R215C (1) [high LL].csv'); %rename - which one, (1) or (2)?
+A_R215C = readmatrix('autocov_KaiC-R215C (1) [high LL].csv');
 A_T495A= readmatrix('autocov_KaiC-T495A [high LL].csv');
 WTh=readmatrix('autocov_WT [high LL].csv');
 
@@ -40,7 +40,7 @@ xlabel('Lag (h)')
 %% Bottom panel
 clearvars -except selpath;
 
-cd([selpath, '/data/meanautocovariance']);
+cd([selpath, '/data/meanautocov']); %for now
 
 %color scheme
 c=[254,235,226;
@@ -50,10 +50,7 @@ c=[254,235,226;
 
 c=c/255;
 
-%A_SP16 = readmatrix('autocov_ΔKaiC-R393C [LL].csv');
-%A_LP48= readmatrix('autocov_ΔKaiC-A251V [LL].csv');
-
-A_SP16 = readmatrix('autocov_KaiC-R393C (2) [LL].csv'); %not 1
+A_SP16 = readmatrix('autocov_KaiC-R393C (1) [LL].csv');
 A_LP48= readmatrix('autocov_KaiC-A251V [LL].csv');
 
 %autocov -> ACF

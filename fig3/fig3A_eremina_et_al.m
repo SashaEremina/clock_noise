@@ -151,10 +151,10 @@ text(a(2)*0.6,yl(2)*0.9,strcat('n=',num2str(m_cell_num(3))));
 
 %% SP16
 
-cd([selpath, '/data/datasets/KaiC-R393C_med_LL_rep2']);
+cd([selpath, '/data/datasets/KaiC-R393C_med_LL_rep1']);
 
-MY=readmatrix('SP16_2_mother_mean_fluor.csv');
-time_adjusted=readmatrix('SP16_2_time_adjusted.csv');
+MY=readmatrix('SP16_mother_mean_fluor.csv');
+time_adjusted=readmatrix('SP16_time_adjusted.csv');
 
 surv=find(all(isnan(MY),1), 1 )-1; %number of cells
 
