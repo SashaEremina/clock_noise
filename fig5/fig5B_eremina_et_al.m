@@ -1,7 +1,9 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
-%noisy day start/end simulation
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\p2pStatistics\noisyenvironments_Fig5']);
+%% noisy day start/end simulation
+cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig5']);
+
 nde_sim=readmatrix('LDsim_nde.csv'); 
 nds_sim=readmatrix('LDsim_nds.csv');
 
@@ -112,7 +114,7 @@ han.Visible = 'off';
 ylabel('Mean trough time (h)')
 han.YLabel.Visible = 'on';
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig5']);
+%% Saving
+cd([selpath,'/figures/fig5']);
 fname='fig5B';
-fig_save_font_20;
+fig_save_font_20_box_on;

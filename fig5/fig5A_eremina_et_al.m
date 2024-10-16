@@ -1,22 +1,24 @@
-close all;clear all;
+close all;
+clearvars -except selpath;
+
 
 %% Noisy day start
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\noisy_day_start']);
-MY=readmatrix('2021-07-17WT_mother_mean_fluor.csv');
+cd([selpath, '/data/datasets/noisy_day_start']);
+MY=readmatrix('WT_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('2021-07-17WT_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
 end
 
-intensity=readmatrix('2021-07-17_WT_light_intensity.csv');
-time_l{1,1}=readmatrix('2021-07-17_WT_time_light_adjusted.csv');
+intensity=readmatrix('WT_light_intensity.csv');
+time_l{1,1}=readmatrix('WT_time_light_adjusted.csv');
 
 intensity2=(intensity/(max(intensity)/max((max(MY)))))*1.5; %adjusting light intesity for visualisation purposes
 
@@ -54,10 +56,10 @@ end
 
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 hold on;
-y=nanmean(MY_smooth');
+y=mean(MY_smooth','omitnan');
 y=y(st:end);
 
-std_dev=nanstd(MY_smooth');
+std_dev=std(MY_smooth','omitnan');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
@@ -90,17 +92,17 @@ title('Noisy day start');
 
 
 %% Noisy day end
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\noisy_day_end']);
+cd([selpath, '/data/datasets/noisy_day_end']);
 
-t_light_int_h=readmatrix('26-Nov-2021_WT_2021-11-26_time_light_adjusted.csv');
-intensity=readmatrix('26-Nov-2021_WT_2021-11-26_light_intensity.csv');
+t_light_int_h=readmatrix('WT_time_light_adjusted.csv');
+intensity=readmatrix('WT_light_intensity.csv');
 
-MY=readmatrix('26-Nov-2021_WT_2021-11-26_mother_mean_fluor.csv');
+MY=readmatrix('WT_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
-time_adjusted1=readmatrix('26-Nov-2021_WT_2021-11-26_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
 time_adjusted=NaN(300,1000);
@@ -147,10 +149,10 @@ end
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 
 hold on;
-y=nanmean(MY_smooth');
+y=mean(MY_smooth','omitnan');
 y=y(st:end);
 
-std_dev=nanstd(MY_smooth');
+std_dev=std(MY_smooth','omitnan');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
@@ -192,8 +194,8 @@ y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig5']);
+%% Saving
+cd([selpath,'/figures/fig5']);
 fname='fig5A';
 fig_save_font_20;
 

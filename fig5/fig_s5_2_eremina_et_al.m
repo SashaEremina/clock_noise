@@ -1,4 +1,5 @@
-close all; clear all;
+close all;
+clearvars -except selpath;
 
 %% Setting up a figure layout
 figure(1)
@@ -30,8 +31,7 @@ for i = 1:numel(titles)
 end
 
 %% Loading the data
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\simulations\random_env_new']);
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\simulations\p2pStatistics\noisyenvironments_Fig5']);
+cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig5']);
 
 nde_sim=readmatrix('LDsim_nde.csv'); 
 nds_sim=readmatrix('LDsim_nds.csv');
@@ -103,7 +103,7 @@ han.Visible = 'off';
 ylabel('Mean trough time, MTT (h)')
 han.YLabel.Visible = 'on';
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig5']);
+%% Saving
+cd([selpath,'/figures/fig5']);
 fname='fig_s5_2';
 fig_save_font_20_box_on;

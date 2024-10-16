@@ -1,22 +1,23 @@
-close all;clear all;
+close all;
+clearvars -except selpath;
 
 %% Pt 1 - noisy day start
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\noisy_day_start']);
+cd([selpath, '/data/datasets/noisy_day_start']);
 
-MY=readmatrix('2021-07-17WT_mother_mean_fluor.csv');
+MY=readmatrix('WT_mother_mean_fluor.csv');
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
 %background subtraction
 MY=MY-300;
 
-time_adjusted1=readmatrix('2021-07-17WT_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;
 end
 
-intensity=readmatrix('2021-07-17_WT_light_intensity.csv');
-time_l{1,1}=readmatrix('2021-07-17_WT_time_light_adjusted.csv');
+intensity=readmatrix('WT_light_intensity.csv');
+time_l{1,1}=readmatrix('WT_time_light_adjusted.csv');
 
 intensity2=(intensity/(max(intensity)/max((max(MY)))))*1.5; %adjusting light intensity -- for visualisation purposes only
 
@@ -61,25 +62,25 @@ text(24, 0.75*max(intensity2),'$\leftarrow$ expected ');
 text(24+2.83,0.65*max(intensity2),'$\leftarrow$ received');
 
 ylim([0 max(intensity2)*0.85])
-yticks(0:250:1250)
+yticks(0:250:1250);
 legend([h(1)],'Location','NorthEast');
 title('Noisy day start');
 
 %% Part 2 - noisy day end
-clear all
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\data\datasets\noisy_day_end']);
+clearvars -except selpath;
+cd([selpath, '/data/datasets/noisy_day_end']);
 
-t_light_int_h=readmatrix('26-Nov-2021_WT_2021-11-26_time_light_adjusted.csv');
-intensity=readmatrix('26-Nov-2021_WT_2021-11-26_light_intensity.csv');
+t_light_int_h=readmatrix('WT_time_light_adjusted.csv');
+intensity=readmatrix('WT_light_intensity.csv');
 
-MY=readmatrix('26-Nov-2021_WT_2021-11-26_mother_mean_fluor.csv');
+MY=readmatrix('WT_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('26-Nov-2021_WT_2021-11-26_time_adjusted.csv');
+time_adjusted1=readmatrix('WT_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 
 for i=1:surv(2)
@@ -144,14 +145,14 @@ title('Noisy day end');
 han=axes(figure(1),'visible','off');
 han.XLabel.Visible='on';
 han.YLabel.Visible='on';
-% ylabel(han,'Fluorescence (a.u.)');
+ylabel(han,'Fluorescence (a.u.)');
 xlabel(han,'Time (h)');
 
 y1=han.YLabel.Position;
 y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
-%Saving - disabled
-cd(['C:\Users\sasha.eremina\Documents\MATLAB\Eremina_et_al_Nat_Comms\figures\fig5']);
+%% Saving
+cd([selpath,'/figures/fig5']);
 fname='fig_s5_1B';
 fig_save_font_20;
