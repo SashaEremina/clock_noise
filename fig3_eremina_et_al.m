@@ -16,7 +16,7 @@ end
 %%
 
 %Fig.3A - data with representative lineages
-fig3A_eremina_et_al;
+fig3A_eremina_et_al; %options 1 and 2 available
 
 %Fig.3B - ACFs
 fig3B_eremina_et_al; %ACFs too short again...
@@ -32,10 +32,10 @@ fig3D_eremina_et_al;
 fig_s3_1_eremina_et_al;
 
 %Fig.s3_2 - all traces for all KaiC mutants
-fig_s3_2_eremina_et_al; %SP16(1) not in use? - resolve the confusion
+fig_s3_2_eremina_et_al;
 
 %Fig.s3_3 - ACFs per period in period mutants
-fig_s3_3_eremina_et_al; %ACFs too short again
+fig_s3_3_eremina_et_al;
 
 %Fig.s3_4  - Kai mutants robustness
 fig_s3_4_eremina_et_al;
