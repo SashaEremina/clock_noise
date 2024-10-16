@@ -2,12 +2,12 @@ close all;
 clearvars -except selpath;
 
 %% noisy day start/end simulation
-cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig5']);
+cd([selpath, '/simulations/p2pStatistics/noisyenvironments_Fig6']);
 
 nde_sim=readmatrix('LDsim_nde.csv'); 
 nds_sim=readmatrix('LDsim_nds.csv');
 
-nde_exp=readmatrix('LDexp_nde.csv'); %currently contrains an error ??
+nde_exp=readmatrix('LDexp_nde.csv');
 nds_exp=readmatrix('LDexp_nds.csv');
 
 %% Noisy day end - plotting
