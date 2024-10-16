@@ -9,7 +9,7 @@ WT_ll=readmatrix('p2pstats_bootstrap_WT [low LL].csv');
 WT_hl=readmatrix('p2pstats_bootstrap_WT [high LL].csv');
 
 WT_ml_2=readmatrix('p2pstats_bootstrap_WT (ΔlalA) [LL].csv');
-WT_ml_3=readmatrix('p2pstats_bootstrap_WT (KaiC-R215C) [medium LL].csv');
+WT_ml_3=readmatrix('p2pstats_bootstrap_WT (KaiC-R215C) [LL].csv');
 
 WT_Ab=readmatrix('p2pstats_bootstrap_WT-Ab [LL].csv'); 
 
