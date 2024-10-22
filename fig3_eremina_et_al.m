@@ -16,10 +16,10 @@ end
 %%
 
 %Fig.3A - data with representative lineages
-fig3A_eremina_et_al; %options 1 and 2 available
+fig3A_eremina_et_al;
 
 %Fig.3B - ACFs
-fig3B_eremina_et_al; %ACFs too short again...
+fig3B_eremina_et_al;
 
 %Fig.3C - model output under LL
 fig3C_eremina_et_al;
