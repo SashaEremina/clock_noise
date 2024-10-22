@@ -208,7 +208,7 @@ MY=MY-200;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('del_ldpA_time_vector.csv');
+time_adjusted1=readmatrix('del_ldpA_time_adjusted.csv');
 time_adjusted1=time_adjusted1';
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
@@ -267,7 +267,7 @@ MY=MY-200;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)]; 
 
-time_adjusted1=readmatrix('del_pex_time_vector.csv');
+time_adjusted1=readmatrix('del_pex_time_adjusted.csv');
 time_adjusted1=time_adjusted1';
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
