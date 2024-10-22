@@ -24,7 +24,7 @@ cd([selpath, '/data/robustness']);
 WT2=readmatrix('robustness_WT [high LL].csv');
 r215c=readmatrix('robustness_KaiC-R215C (1) [high LL].csv');
 t495a=readmatrix('robustness_KaiC-T495A [high LL].csv');
-r393c=readmatrix('robustness_KaiC-R393C (1) [LL].csv');
+r393c=readmatrix('robustness_KaiC-R393C [LL].csv');
 a251v=readmatrix('robustness_KaiC-A251V [LL].csv');
 
 %% Plotting

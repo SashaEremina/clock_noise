@@ -4,7 +4,7 @@ clearvars -except selpath;
 %%
 cd([selpath, '/data/meanautocovariance']);
 
-A_SP16 = readmatrix('autocov_KaiC-R393C (1) [LL].csv'); %(1) or (2)?
+A_SP16 = readmatrix('autocov_KaiC-R393C [LL].csv');
 A_LP48= readmatrix('autocov_KaiC-A251V [LL].csv');
 
 %color scheme

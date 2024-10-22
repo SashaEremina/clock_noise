@@ -63,7 +63,6 @@ T495A=readmatrix('p2pstats_bootstrap_KaiC-T495A [high LL].csv');
 SP16=readmatrix('p2pstats_bootstrap_KaiC-R393C [LL].csv'); 
 LP48=readmatrix('p2pstats_bootstrap_KaiC-A251V [LL].csv');
 
-%cd(['C:\Users\sasha.eremina\Documents\MATLAB\philipp_data\p2pstats\errorbars\new']);
 R215C_h=readmatrix('p2pstats_bootstrap_KaiC-R215C (1) [high LL].csv');
 R215C_m=readmatrix('p2pstats_bootstrap_KaiC-R215C [LL].csv');
 

@@ -10,7 +10,6 @@ cc=[254,237,222;
 cc=cc/255;
 
 %% Plotting:
-%KaiC-R215C OLD - IS THIS THE RIGHT DATASET?
 
 cd([selpath, '/data/datasets/KaiC-R215C_high_LL_rep1']);
 MY=readmatrix('KaiC-R215C_mother_mean_fluor.csv');
@@ -122,7 +121,7 @@ title('WT high LL'); set(gca,'Fontsize', 9);
 
 %% KaiC-T495A
 
-cd([selpath, '/data/datasets/KaiC-T495A_high_LL_rep1']);
+cd([selpath, '/data/datasets/KaiC-T495A_high_LL']);
 
 MY=readmatrix('KaiC-T495A_mother_mean_fluor.csv');
 
@@ -271,16 +270,16 @@ title('LP48 medium LL'); set(gca,'Fontsize', 9);
 
 %% SP16
 
-cd([selpath, '/data/datasets/KaiC-R393C_med_LL_rep2']); 
+cd([selpath, '/data/datasets/KaiC-R393C_med_LL']); 
 
-MY=readmatrix('SP16_2_mother_mean_fluor.csv');
+MY=readmatrix('SP16_mother_mean_fluor.csv');
 
 %background subtraction
 MY=MY-300;
 
 surv=[1,ceil(find(~isnan(MY), 1, 'last' )/300)];
 
-time_adjusted1=readmatrix('SP16_2_time_adjusted.csv');
+time_adjusted1=readmatrix('SP16_time_adjusted.csv');
 time_adjusted=NaN(300,1000);
 for i=1:surv(2)
     time_adjusted(1:size(time_adjusted1,2),i)=time_adjusted1;

@@ -98,7 +98,7 @@ xlabel('Time (h)');
 
 %% KaiC med LL
 
-cd([selpath, '/data/datasets/KaiC-R215C_med_LL_rep1']);
+cd([selpath, '/data/datasets/KaiC-R215C_med_LL']);
 
 MY=readmatrix('KaiC-R215C_mother_mean_fluor.csv');
 

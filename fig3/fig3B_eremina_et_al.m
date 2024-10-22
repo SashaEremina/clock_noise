@@ -40,7 +40,7 @@ xlabel('Lag (h)')
 %% Bottom panel
 clearvars -except selpath;
 
-cd([selpath, '/data/meanautocov']); %for now
+cd([selpath, '/data/meanautocovariance']);
 
 %color scheme
 c=[254,235,226;
@@ -50,7 +50,7 @@ c=[254,235,226;
 
 c=c/255;
 
-A_SP16 = readmatrix('autocov_KaiC-R393C (1) [LL].csv');
+A_SP16 = readmatrix('autocov_KaiC-R393C [LL].csv');
 A_LP48= readmatrix('autocov_KaiC-A251V [LL].csv');
 
 %autocov -> ACF

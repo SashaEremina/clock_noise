@@ -100,7 +100,7 @@ text(a(2)*0.6,yl(2)*0.9,strcat('n=',num2str(m_cell_num(2))));
 
 %% 3 KaiC-T495A
 
-cd([selpath, '/data/datasets/KaiC-T495A_high_LL_rep1']);
+cd([selpath, '/data/datasets/KaiC-T495A_high_LL']);
 
 MY=readmatrix('KaiC-T495A_mother_mean_fluor.csv');
 time_adjusted=readmatrix('KaiC-T495A_time_adjusted.csv');
@@ -151,7 +151,7 @@ text(a(2)*0.6,yl(2)*0.9,strcat('n=',num2str(m_cell_num(3))));
 
 %% SP16
 
-cd([selpath, '/data/datasets/KaiC-R393C_med_LL_rep1']);
+cd([selpath, '/data/datasets/KaiC-R393C_med_LL']);
 
 MY=readmatrix('SP16_mother_mean_fluor.csv');
 time_adjusted=readmatrix('SP16_time_adjusted.csv');
@@ -184,16 +184,13 @@ xlim([0 106]);
 xticks(0:16:max(max(time_adjusted)));
 ylim([300 1800]);
 
-hold on; %10, 12-15,17-18 are good
-%h(2)=plot(time_adjusted(st:end),MY_smooth(st:160,30),'b','LineWidth',2,'DisplayName','Representative lineage'); %old for datatset 2
-h(2)=plot(time_adjusted(st:end),MY_smooth(st:185,1),'b','LineWidth',2,'DisplayName','Representative lineage'); %old for datatset 2
+hold on; 
+h(2)=plot(time_adjusted(st:end),MY_smooth(st:185,1),'b','LineWidth',2,'DisplayName','Representative lineage');
 MY_a=mean(MY','omitnan');
 
 t_m=ceil(find(time_adjusted==max(max(time_adjusted)), 1 )/size(time_adjusted,1));
 m_cell_num(4)=surv;
-%h(3)=plot(time_adjusted(st:end),MY_smooth(st:160,7),'k','LineWidth',2,'DisplayName','Representative lineage'); %'WT Lineage' 
-h(3)=plot(time_adjusted(st:end),MY_smooth(st:185,5),'k','LineWidth',2,'DisplayName','Representative lineage'); %old for datatset 2
-%hold on; h(4)=plot(time_adjusted(start_p:end),MY_a(start_p:160),'LineWidth',2,'Color','m','DisplayName','Mean');
+h(3)=plot(time_adjusted(st:end),MY_smooth(st:185,5),'k','LineWidth',2,'DisplayName','Representative lineage');
 hold on; h(4)=plot(time_adjusted(start_p:end),MY_a(start_p:185),'LineWidth',2,'Color','m','DisplayName','Mean');
 h(5) = plot(NaN,NaN,'LineStyle','none','DisplayName',strcat('n=',num2str(m_cell_num(4))));
 title('SP16 medium LL'); set(gca,'Fontsize', 9);
