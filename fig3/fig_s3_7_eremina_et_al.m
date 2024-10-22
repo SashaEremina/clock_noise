@@ -151,10 +151,10 @@ end
 
 %% Pt 2 - ACFs
 
-cd([selpath, '/data/meanautocovariance']);
+cd([selpath, '/data/meanautocovariance/mean_subtract']);
+A_hLL = readmatrix('autocov_msub_KaiC-R215C (2) [high LL].csv'); %high LL repeat
+A_mLL= readmatrix('autocov_msub_KaiC-R215C [LL].csv'); %med LL
 
-A_hLL = readmatrix('autocov_KaiC-R215C (2) [high LL].csv'); %high LL repeat (was (1))
-A_mLL= readmatrix('autocov_KaiC-R215C [LL].csv'); %med LL
 
 %autocov -> acf
 A_hLL(:,2)=A_hLL(:,2)./max(A_hLL(:,2));
