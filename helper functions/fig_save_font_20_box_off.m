@@ -1,7 +1,13 @@
 
-%Location
-if ~contains(pwd,strcat(selpath,'/figures'))
-    cd([selpath,'/figures']);
+tf=ispc; %for windows
+if tf==1
+    if ~contains(pwd,strcat(selpath,'\figures')) 
+        cd([selpath,'\figures']);
+    end
+else %mac, linux
+    if ~contains(pwd,strcat(selpath,'/figures'))
+        cd([selpath,'/figures']);
+    end
 end
 
 
