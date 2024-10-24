@@ -42,10 +42,10 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 
 hold on; 
 
-y=mean(MY','omitnan');
+y=nanmean(MY_smooth');
 y=y(st:end);
 
-std_dev=std(MY','omitnan');
+std_dev=nanstd(MY_smooth');
 std_dev=std_dev(st:end);
 
 a=max(max(time_adjusted));
@@ -67,8 +67,8 @@ set(h(1),'facealpha',.3);
 hold on; 
 
 %mean trace
-y=mean(MY','omitnan');
-std_dev=std(MY','omitnan');
+y=nanmean(MY_smooth');
+std_dev=nanstd(MY_smooth');
 l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 x=time_adjusted(:,l)';
 h(2)=plot(x(st:end), y(st:end), 'b', 'LineWidth', 2,'DisplayName','mean medium LD');
