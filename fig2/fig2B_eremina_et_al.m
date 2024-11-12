@@ -322,11 +322,11 @@ rr=200;
 
 w5(61:62)=NaN; %filtering the outliers out - non-real peaks in oscillations drive the mean period down
 
-text(-15,r,strcat('$\mathrm{p_{WT}}$=', num2str(round(mean(w5,'omitnan'),1)),'$\pm$',num2str(round(std(w5,'omitnan'),1)),'h'));
-text(-15,r-4*rr,strcat('$\mathrm{p_{\Delta \it lalA}}$=', num2str(round(mean(w4,'omitnan'),1)),'$\pm$',num2str(round(std(w4,'omitnan'),1)),'h'));
-text(-15, r-rr,strcat('$\mathrm{p_{\Delta \it ldpA}}$=', num2str(round(mean(w1,'omitnan'),1)),'$\pm$',num2str(round(std(w1,'omitnan'),1)),'h'));
-text(-15, r-2*rr,strcat('$\mathrm{p_{\Delta \it pex}}$=', num2str(round(mean(w2,'omitnan'),1)),'$\pm$',num2str(round(std(w2,'omitnan'),1)),'h'));
-text(-15,r-3*rr,strcat('$\mathrm{p_{\Delta \it prkE}}$=', num2str(round(mean(w3,'omitnan'),1)),'$\pm$',num2str(round(std(w3,'omitnan'),1)),'h'));
+text(-15,r,strcat('${p_{WT}}$=', num2str(round(mean(w5,'omitnan'),1)),'$\pm$',num2str(round(std(w5,'omitnan'),1)),'h'));
+text(-15,r-4*rr,strcat('$\mathrm{p}_{\Delta \it lalA}$=', num2str(round(mean(w4,'omitnan'),1)),'$\pm$',num2str(round(std(w4,'omitnan'),1)),'h'));
+text(-15, r-rr,strcat('$\mathrm{p}_{\Delta \it ldpA}$=', num2str(round(mean(w1,'omitnan'),1)),'$\pm$',num2str(round(std(w1,'omitnan'),1)),'h'));
+text(-15, r-2*rr,strcat('$\mathrm{p}_{\Delta \it pex}$=', num2str(round(mean(w2,'omitnan'),1)),'$\pm$',num2str(round(std(w2,'omitnan'),1)),'h'));
+text(-15,r-3*rr,strcat('$\mathrm{p}_{\Delta \it prkE}$=', num2str(round(mean(w3,'omitnan'),1)),'$\pm$',num2str(round(std(w3,'omitnan'),1)),'h'));
 
 
 %% Setting fonts etc
