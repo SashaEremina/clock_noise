@@ -50,7 +50,7 @@ hold on; f(4)=plot(t,MY_tn,'DisplayName','fluorescence ({\it x(t)})','LineWidth'
 %%Titles, legends, axis
 l=legend(f([2 3 4 1]),'Location','bestoutside'); 
 xticks(0:24:140);
-xlim([0 140]);
+xlim([0 138]);
 xlabel('Time (h)');
 
 title ({'HT-based decomposition', 'of fluorescence signal'});
