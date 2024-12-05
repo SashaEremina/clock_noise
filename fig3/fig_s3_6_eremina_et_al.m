@@ -291,7 +291,7 @@ legend ([p(2), p(1),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
 %% Saving
 cd([selpath,'/figures/fig3']);
-fname='fig_s3_6D';
+fname='fig_s3_6C';
 fig2_save_font_20;
 
 
@@ -375,5 +375,5 @@ legend ([p(2), p(1),h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 
 %% Saving
 cd([selpath,'/figures/fig3']);
-fname='fig_s3_6C';
+fname='fig_s3_6D';
 fig2_save_font_20;
