@@ -8,6 +8,7 @@ int=readmatrix('WT_light_intensity.csv');
 int=(int*19.7);
 
 time_light2=readmatrix('WT_time_light_adjusted.csv');
+time_light2=time_light2+(abs(time_light2(86))+abs(time_light2(87)));
 
 
 figure; 
@@ -35,6 +36,8 @@ int=readmatrix('WT-reporter_light_intensity.csv');
 int=int*19.7;
 
 time_light2=readmatrix('WT-reporter_time_light_adjusted.csv');
+time_light2=time_light2+(abs(time_light2(80))+abs(time_light2(81)));
+
 
 %plot the light intensities
 hold on;

@@ -23,6 +23,7 @@ int=readmatrix('WT_light_intensity.csv');
 int=(int*19.7);
 
 time_light2=readmatrix('WT_time_light_adjusted.csv');
+time_light2=time_light2+(abs(time_light2(86))+abs(time_light2(87)));
 
 k=(max(int)/max((max(MY))*0.6)); %adjusting the light intensity - for visualisation purposes only
 
@@ -86,6 +87,9 @@ for i=1:surv(2)
 end
 
 time_light2=readmatrix('WT-reporter_time_light_adjusted.csv');
+
+time_light2=time_light2+(abs(time_light2(80))+abs(time_light2(81)));
+
 int=readmatrix('WT-reporter_light_intensity.csv');
 
 k=(max(int)/max((max(MY))*0.6)); %scaling has to be roughly comparable to the one in Caribbean 1 (for visualisation only) 
