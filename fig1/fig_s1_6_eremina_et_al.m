@@ -74,7 +74,7 @@ xlabel('1/[YFP]');
 
 % Saving
 cd([selpath,'/figures/fig1']);
-fname='fig_s1_6B';
+fname='fig_s1_6A';
 fig_save_font_20;
 
 %% Fig.S1_6B: Plotting - high LL
