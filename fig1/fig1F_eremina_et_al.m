@@ -22,18 +22,18 @@ title ('Phase');
 
 hh(1).BinWidth=100;
 xlim([0 2550]);
-xticks(0:750:2500);
+xticks(0:750:2500); xtickangle(0);
 
 subplot (3,2,3); hold on; hh(2)=histogram(w2,'Normalization','Probability','FaceColor','blue','DisplayName','medium LL');
 hh(2).BinWidth=100;
 xlim([0 2550]);
-xticks(0:750:2500);
+xticks(0:750:2500); xtickangle(0);
 
 subplot (3,2,5); hold on; hh(3)=histogram (w3,'Normalization','Probability','FaceColor','magenta','DisplayName','high LL');
 hh(3).BinWidth=100;
 
 xlim([0 2550]);
-xticks(0:750:2500);
+xticks(0:750:2500); xtickangle(0);
 
 for i=1:3
     hh(i).FaceAlpha=0.2;
