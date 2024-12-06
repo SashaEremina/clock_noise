@@ -125,4 +125,4 @@ han.YLabel.Position(1)=han.YLabel.Position(1)*1.4;
 %% Saving - disabled
 cd([selpath,'/figures/fig2']);
 fname='fig_s2_2';
-fig_save_font_20;
+fig_save_font_18;
