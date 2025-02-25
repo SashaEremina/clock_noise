@@ -59,12 +59,12 @@ w4=(1./(r393c(:,3)'))/24;
 w5=(1./(r215c(:,3)'))/24;
 w6=(1./(t495a(:,3)'))/24; 
 
-subplot(5,2,1); h(2)=histogram(w2,'Normalization', 'probability'); hold on; yticks(0:0.2:0.2); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'WT','Units','normalized');
-subplot(5,2,7); h(3)=histogram(w4,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'SP16','Units','normalized');
-subplot(5,2,3); h(4)=histogram(w5,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.3]); text(0.35,0.6,'KaiC-R215C','Units','normalized')
-subplot(5,2,9); h(5)=histogram(w3,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.3]); text(0.35,0.6,'LP48','Units','normalized');
+subplot(5,2,1); h(2)=histogram(w2,'Normalization', 'probability','LineWidth',0.5); hold on; yticks(0:0.5:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.9]); text(0.35,0.6,'WT','Units','normalized');
+subplot(5,2,7); h(3)=histogram(w4,'Normalization', 'probability','LineWidth',0.5); hold on; yticks(0:0.5:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.9]); text(0.35,0.6,'SP16','Units','normalized');
+subplot(5,2,3); h(4)=histogram(w5,'Normalization', 'probability','LineWidth',0.5); hold on; yticks(0:0.5:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.9]); text(0.35,0.6,'KaiC-R215C','Units','normalized')
+subplot(5,2,9); h(5)=histogram(w3,'Normalization', 'probability','LineWidth',0.5); hold on; yticks(0:0.5:0.5); xticks(0:750:2250); xlim([0 2250]); ylim ([0 0.9]); text(0.35,0.6,'LP48','Units','normalized');
 xlabel('Phase diffusion time (d)'); hold on;
-subplot(5,2,5); h(6)=histogram(w6,'Normalization', 'probability'); hold on; yticks(0:0.2:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.3]); text(0.35,0.6,'KaiC-T495A','Units','normalized') ;
+subplot(5,2,5); h(6)=histogram(w6,'Normalization', 'probability','LineWidth',0.5); hold on; yticks(0:0.5:0.5); xticks(0:75:225); xlim([0 225]); ylim ([0 0.9]); text(0.35,0.6,'KaiC-T495A','Units','normalized') ;
 
 h(2).FaceColor= cc(1,:);
 h(3).FaceColor= c(3,:);
@@ -80,7 +80,7 @@ for hh=2:6
         h(hh).BinWidth=15;
     end    
 
-     h(hh).EdgeColor=h(hh).FaceColor;
+     h(hh).EdgeColor=[0 0 0]; %h(hh).FaceColor;
 end
 
 %% Pt2 - Autocorrelation time
@@ -99,13 +99,13 @@ w5=rmoutliers(w5,'percentiles',[0 86]);
 
 w6=(2./(t495a(:,2)'))/24; 
 
-subplot(5,2,2); h(2)=histogram(w2,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
-subplot(5,2,8); h(3)=histogram(w4,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
-subplot(5,2,4); h(4)=histogram(w5,'Normalization', 'probability'); hold on; xticks(0:25:100); xlim([0 100]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
-subplot(5,2,10); h(5)=histogram(w3,'Normalization', 'probability'); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
+subplot(5,2,2); h(2)=histogram(w2,'Normalization', 'probability','LineWidth',0.5); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.5:0.5); ylim ([0 0.96]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
+subplot(5,2,8); h(3)=histogram(w4,'Normalization', 'probability','LineWidth',0.5); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.5:0.5); ylim ([0 0.96]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
+subplot(5,2,4); h(4)=histogram(w5,'Normalization', 'probability','LineWidth',0.5); hold on; xticks(0:50:200); xlim([0 100]); yticks(0:0.5:0.5); ylim ([0 0.96]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
+subplot(5,2,10); h(5)=histogram(w3,'Normalization', 'probability','LineWidth',0.5); hold on; xticks(0:50:200); xlim([0 200]); yticks(0:0.5:0.5); ylim ([0 0.96]); text(0.35,0.6,'medium LL','Units','normalized') %legend ('WT') 
 
 xlabel('Autocorrelation time (d)'); hold on;
-subplot(5,2,6); h(6)=histogram(w6,'Normalization', 'probability'); hold on; xticks(0:25:100); xlim([0 100]); yticks(0:0.25:0.5); ylim ([0 0.4]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
+subplot(5,2,6); h(6)=histogram(w6,'Normalization', 'probability','LineWidth',0.5); hold on; xticks(0:25:100); xlim([0 100]); yticks(0:0.5:0.5); ylim ([0 0.96]); text(0.35,0.6,'high LL','Units','normalized') %legend ('WT') 
 
 h(2).FaceColor= cc(1,:);
 h(3).FaceColor= c(3,:);
@@ -122,7 +122,7 @@ for hh=2:6
     else
         h(hh).BinWidth=5;    
     end
-    h(hh).EdgeColor=h(hh).FaceColor;
+    h(hh).EdgeColor=[0 0 0];%h(hh).FaceColor;
 end
 
 %% Figure styling
@@ -136,4 +136,4 @@ han.YLabel.Position(1)=han.YLabel.Position(1)*1.4;
 %% Saving
 cd([selpath,'/figures/fig3']);
 fname='fig_s3_4';
-fig_save_font_16;
+fig_save_font_18_ssf;
