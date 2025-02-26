@@ -27,7 +27,7 @@ hold on;
 subplot(2,1,2); 
 p(4)=errorbar(v(1:4)'+0.05,ndc2_sim(:,1),ndc2_sim(:,1).*ndc2_sim(:,2),'ob','LineWidth',1); hold on;
 dd(4)=errorbar(v(1:4)'-0.05,ndc2_exp(:,1),ndc2_exp(:,1).*ndc2_exp(:,2),'om','LineWidth',1); hold on;
-xlabel('Day ($\#$)'); 
+xlabel('Day (#)'); 
 ylim([3 7]); yticks(4:1:8); xlim([0.1 5.5]); xticks(1:4);
 title('Caribbean 2');
 
@@ -51,5 +51,5 @@ han.YLabel.Visible = 'on';
 %% Saving
 cd([selpath,'/figures/fig6']);
 fname='fig6B';
-fig_save_font_20_box_on;
+fig_save_font_20_box_on_ssf;
 

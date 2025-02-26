@@ -63,7 +63,7 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$'); 
+h(1)=fill(x2, inBetween, 'm','DisplayName','\sigma'); 
 set(h(1),'facealpha',.3);
 
 hold on; 
@@ -143,7 +143,7 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$'); 
+h(1)=fill(x2, inBetween, 'm','DisplayName','\sigma'); 
 set(h(1),'facealpha',.3);
 
 hold on; 
@@ -153,8 +153,8 @@ h(2)=plot(time_adjusted(st:end,20),MY_smooth(st:end,20),'m','LineWidth',2,'Displ
 xlim([-12 120]); xticks(0:24:120); 
 ylim([0 750]); yticks(0:250:750)
 l=legend([h(2) h(1)],'NumColumns',2);
-l.Position(2)=l.Position(2)*0.95;
-l.Position(1)=l.Position(1)*0.9;
+l.Position(2)=l.Position(2)*0.96;
+l.Position(1)=l.Position(1)*0.8;
 
 title('Caribbean 2');
 
@@ -164,7 +164,7 @@ hold on; text (-10,750*0.88,strcat('n=',num2str(GR.m_cell_num(2))));
 
 yyaxis right; yticks(0:0.2:0.9);
 yticklabels({'0','20','40','60','80'});
-ylabel({'Light intensity ($\mu$mol $m^{-2}$ $s^{-1}$)'}); %have to manually center the label
+ylabel({'Light intensity (\mumol m^{-2} s^{-1})'}); %have to manually center the label
 ax = gca;
 ax.YColor='k';
 
@@ -177,11 +177,11 @@ ylabel(han,'Fluorescence (a.u.)');
 xlabel(han,'Time (h)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.6;
+y1(1)=y1(1)*1.8;
 han.YLabel.Position=y1;
 
 %% Saving
 cd([selpath,'/figures/fig6']);
 fname='fig6A';
-fig_save_font_20;
+fig_save_font_20_box_on_ssf;
 

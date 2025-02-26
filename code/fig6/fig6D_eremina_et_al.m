@@ -39,7 +39,7 @@ han.XLabel.Visible='on';
 han.YLabel.Visible='on';
 
 ylabel(han,'Mean trough time (h)');
-xlabel('Day ($\#$)');
+xlabel('Day (#)');
 
 y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
@@ -79,7 +79,7 @@ han.XLabel.Visible='on';
 han.YLabel.Visible='on';
 
 ylabel(han,'Mean trough time (h)');
-xlabel('Day ($\#$)');
+xlabel('Day (#)');
 
 y1=han.YLabel.Position;
 y1(1)=y1(1)*1.4;
@@ -88,6 +88,6 @@ han.YLabel.Position=y1;
 %% Saving
 cd([selpath,'/figures/fig6']);
 fname='fig6D';
-fig_save_font_20_box_on;
+fig_save_font_18_box_on_ssf;
 
 

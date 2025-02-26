@@ -59,15 +59,15 @@ han=axes(figure(1),'visible','off');
 han.XLabel.Visible='on';
 han.YLabel.Visible='on';
 
-ylabel(han,'Light intensity ($\mu$mol $m^{-2}$ $s^{-1}$)');
+ylabel(han,'Light intensity (\mumol m^{-2} s^{-1})');
 xlabel(han,'Time (h)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.4;
+y1(1)=y1(1)*1.6;
 han.YLabel.Position=y1;
 
 %% Saving
 cd([selpath,'/figures/fig6']);
 fname='fig6C';
-fig_save_font_20_box_on; %check for box/ no box!
+fig_save_font_20_box_on_ssf; %check for box/ no box!
 
