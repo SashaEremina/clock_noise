@@ -28,24 +28,26 @@ fig3C_eremina_et_al;
 fig3D_eremina_et_al;
 
 %% Supplementary:
-%Fig.s3_1 - antibiotic resistance
-fig_s3_1_eremina_et_al;
+%Fig.s10 - antibiotic resistance
+fig_s10_eremina_et_al;
 
-%Fig.s3_2 - all traces for all KaiC mutants
-fig_s3_2_eremina_et_al;
+%Fig.s11 - all traces for all KaiC mutants
+fig_s11_eremina_et_al;
 
-%Fig.s3_3 - ACFs per period in period mutants
-fig_s3_3_eremina_et_al;
+%Fig.s12 - ACFs per period in period mutants
+fig_s12_eremina_et_al;
 
-%Fig.s3_4  - Kai mutants robustness
-fig_s3_4_eremina_et_al;
+%Fig.s13 - Light makes no difference to mut clock behaviour
+fig_s13_eremina_et_al;
 
-%Fig.s3_5 - Posterior distributions
-fig_s3_5_eremina_et_al;
+%Fig.s14  - Kai mutants robustness
+fig_s14_eremina_et_al;
 
-%Fig.s3_6 - Simulations of different perturbations;
-fig_s3_6_eremina_et_al;
+%Fig.s15 - Posterior distributions
+fig_s15_eremina_et_al;
 
-%Fig.s3_7 - Light makes no difference to mut clock behaviour
-fig_s3_7_eremina_et_al;
+%Fig.s16 - Simulations of different perturbations;
+fig_s16_eremina_et_al;
+
+
 

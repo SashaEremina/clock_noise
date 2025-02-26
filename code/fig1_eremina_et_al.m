@@ -34,30 +34,30 @@ fig1F_eremina_et_al;
 close all;
 fig1G_eremina_et_al;
 
-%% Fig. 1F - Cell synch
+%% Fig.1H - Cell synch
 close all;
 fig1H_eremina_et_al;
 
 %% Supplementary
 
-%Fig.S1.3 - raw fluorescence for low LL and high LL
+%Fig.S3 - raw fluorescence for low LL and high LL
 close all;
-fig_s1_3_eremina_et_al;
+fig_s3_eremina_et_al;
 
-%% Fig.S1.4 - methods for clock dynamics analysis
+%% Fig.S4 - methods for clock dynamics analysis
 close all;
-fig_s1_4A_eremina_et_al; %hilbert transform
-
-close all;
-fig_s1_4B_eremina_et_al; %phase diffusion
+fig_s4A_eremina_et_al; %hilbert transform
 
 close all;
-fig_s1_4C_eremina_et_al; %autocorrelation damping analysis
+fig_s4B_eremina_et_al; %phase diffusion
 
-%% Fig.S1.5 - C.V. in GE under x3 LL conditions
 close all;
-fig_s1_5_eremina_et_al;
+fig_s4C_eremina_et_al; %autocorrelation damping analysis
 
-%% Fig.S1.6 - noise loops under low and high LL
+%% Fig.S5 - noise loops under low and high LL
 close all;
-fig_s1_6_eremina_et_al;
+fig_s5_eremina_et_al;
+
+%% Fig.S6 - C.V. in GE under x3 LL conditions
+close all;
+fig_s6_eremina_et_al;

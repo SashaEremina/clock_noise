@@ -26,11 +26,11 @@ fig2C_eremina_et_al;
 fig2D_eremina_et_al;
 
 %% Supplementary
-%Fig.S2.1
-fig_s2_1_eremina_et_al; %violin plots for del_reg periods
+%Fig.S7
+fig_s7_eremina_et_al; %violin plots for del_reg periods
 
-%Fig.S2.2 - phase diffusion time and autocorrelation time for del_regs
-fig_s2_2_eremina_et_al;
+%Fig.S8 - phase diffusion time and autocorrelation time for del_regs
+fig_s8_eremina_et_al;
 
-%Fig.S2.3 - noise loops for del_regs
-fig_s2_3_eremina_et_al;
+%Fig.S9 - noise loops for del_regs
+fig_s9_eremina_et_al;

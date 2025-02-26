@@ -28,9 +28,10 @@ fig6C_eremina_et_al;
 fig6D_eremina_et_al;
 
 %% Supplementary
-%Fig_s6_1
-fig_s6_1A_eremina_et_al; %Caribbean light intensities
-fig_s6_1B_eremina_et_al; %Raw data under Caribbean light - all
+%Fig_s21
+fig_s21A_eremina_et_al; %Caribbean light intensities
+fig_s21B_eremina_et_al; %Raw data under Caribbean light - all
 
-fig_s6_2A_eremina_et_al; %noisy day raw data
-fig_s6_2B_eremina_et_al; %MTT for data and simulations under different light environments
+%Fig_s22
+fig_s22A_eremina_et_al; %noisy day raw data
+fig_s22B_eremina_et_al; %MTT for data and simulations under different light environments

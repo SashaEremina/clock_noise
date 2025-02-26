@@ -22,11 +22,11 @@ fig5B_eremina_et_al;
 
 %% Supplementary
 
-%Fig.s5_1A - light conditions under noisy day start/ end
-fig_s5_1A_eremina_et_al;
+%Fig.s19A - light conditions under noisy day start/ end
+fig_s19A_eremina_et_al;
 
-%Fig.s5_1B - fluorescence reporter data under noisy day start/ end
-fig_s5_1B_eremina_et_al;
+%Fig.s19B - fluorescence reporter data under noisy day start/ end
+fig_s19B_eremina_et_al;
 
-%Fig.s5_2 - clock noise is stable across the environments
-fig_s5_2_eremina_et_al;
+%Fig.s20 - clock noise is stable across the environments
+fig_s20_eremina_et_al;
