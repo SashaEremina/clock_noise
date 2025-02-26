@@ -6,6 +6,7 @@ cd([selpath, '/data/robustness']);
 
 wt_l1=readmatrix('robustness_WT [low LL].csv'); %low LL
 wt_l2=readmatrix('robustness_WT [LL].csv');%medium LL
+
 wt_l3=readmatrix('robustness_WT [high LL].csv');%high LL
 
 w1=wt_l1(:,3);
@@ -80,7 +81,7 @@ subplot(3,2,6); hold on; hh(3)=histogram (w3,'Normalization','Probability','Face
 text(max(xlim)*0.4, max(ylim)*0.8,'high LL') %legend
 
 xlim([0 160]);
-xticks(0:50:150);
+xticks(0:50:150); xtickangle(0);
 
 
 for i=1:3
@@ -103,7 +104,8 @@ han.YLabel.Position(1)= han.YLabel.Position(1)*1.6;
 %% Saving 
 cd([selpath,'/figures/fig1']);
 fname='fig1F'; 
-fig_save_font_22;
+%fig_save_font_22;
+fig_save_font_22_ssf;
 
 %% computing D, phase diffusion coefficients
 D1=mean(rmoutliers(wt_l1(:,3)),'omitnan');

@@ -20,7 +20,8 @@ fig1C_eremina_et_al;
 %Saving
 cd([selpath,'/figures/fig1'])
 fname='fig1C';
-fig_save_font_22;
+%fig_save_font_22;
+fig_save_font_22_ssf;
 
 %% Fig.1D
 close all
@@ -29,4 +30,5 @@ fig1D_eremina_et_al;
 %Saving
 cd([selpath,'/figures/fig1'])
 fname='fig1D';
-fig_save_font_22;
+%fig_save_font_22;
+fig_save_font_22_ssf;

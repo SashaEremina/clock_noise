@@ -54,5 +54,6 @@ v3.LineWidth=2; v3.DisplayName='high LL mean';
 %% Saving
 cd([selpath,'/figures/fig1']);
 fname='fig1E';
-fig_save_font_22;
+%fig_save_font_22
+fig_save_font_22_ssf;
 

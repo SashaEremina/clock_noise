@@ -30,7 +30,8 @@ ylim([yl_1 yl_2])
 xlim([-12 144]);xticks(0:24:144);
 
 xlabel('Time (h)');
-ylabel ('Cell length ($\mu$m)'); 
+%ylabel ('Cell length ($\mu$m)'); 
+ylabel (['Cell length (',char(181),'m)']); 
 
 legend(h(2:3));
 

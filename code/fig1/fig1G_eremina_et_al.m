@@ -34,18 +34,21 @@ xticks(2*10^(-3): 2.5*10^(-3): 10*10^(-3))
 ylim([0 0.04]);
 yticks(0:0.01:0.04)
 
-ylabel('C.V.$^2$');
+%ylabel('C.V.$^2$');
+ylabel('C.V.^2');
 xlabel('1/[YFP]');
 title('Average noise per period')
 
 hold on; s(1)=subplot(2,1,1);
-pp=plot(nwt2(:,2),nwt2(:,3),'-','LineWidth',2,'DisplayName','mean $\ $ $\ $');
+%pp=plot(nwt2(:,2),nwt2(:,3),'-','LineWidth',2,'DisplayName','mean $\ $ $\ $');
+pp=plot(nwt2(:,2),nwt2(:,3),'-','LineWidth',2,'DisplayName','mean');
 pp.Color=c(14,:);
 hold on;
 pp2=plot(nwt2(:,2),nwt2(:,3),'o','LineWidth',0.5,'DisplayName','mean');
 pp2.Color=c(14,:);
 hold on;
-pp3=plot(nwt2(39,2),nwt2(39,3),'-o','LineWidth',2,'DisplayName','$ZT_0$');
+%pp3=plot(nwt2(39,2),nwt2(39,3),'-o','LineWidth',2,'DisplayName','$ZT_0$');
+pp3=plot(nwt2(39,2),nwt2(39,3),'-o','LineWidth',2,'DisplayName','ZT_0');
 pp3.Color=c(14,:);
 pp3.MarkerFaceColor=[0 0 1];
 
@@ -61,10 +64,12 @@ xticks(2*10^(-3): 2.5*10^(-3): 10*10^(-3))
 ylim([0 0.04]);
 yticks(0:0.01:0.04)
 
-ylabel('C.V.$^2$');
+%ylabel('C.V.$^2$');
+ylabel('C.V.^2');
 xlabel('1/[YFP]');
 
 %% Saving
 cd([selpath,'/figures/fig1']);
 fname='fig1G';
-fig_save_font_20;
+fig_save_font_22_ssf; %manual panel alignment
+%fig_save_font_20;
