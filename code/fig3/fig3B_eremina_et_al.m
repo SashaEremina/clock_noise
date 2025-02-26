@@ -98,4 +98,4 @@ han.YLabel.Position=y1;
 %% Saving
 cd([selpath,'/figures/fig3']);
 fname='fig3B';
-fig_save_font_20;
+fig_save_font_20_ssf;

@@ -135,4 +135,4 @@ legend ([hh,h(3),h(1:2),h(4),h(7:9),h(5:6)],'Location','BestOutside')
 %% Saving
 cd([selpath,'/figures/fig3']);
 fname='fig3D';
-fig_save_font_20;
+fig_save_font_20_ssf;

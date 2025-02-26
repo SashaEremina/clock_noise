@@ -1,5 +1,5 @@
 close all;
-clearvars -except selpath;
+clearvars -except selpath; 
 
 %% WT
 cd([selpath, '/data/datasets/WT_high_LL']);
@@ -32,7 +32,7 @@ yl=[0 700];
 figure(1); 
 subplot(3,2,1); patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:200:600);
-xlim([-12 120]); xticks(0:24:144);
+xlim([-12 120]); xticks(0:24:144); xtickangle(45);
 ylim([0 700]); xlim([-12 106]);
 
 h(2)=plot(time_adjusted(st:end),MY_smooth(st:157,12),'b','LineWidth',2,'DisplayName','Representative lineage'); 
@@ -78,7 +78,7 @@ yl=[0 400];
 figure(1); 
 subplot(3,2,3);
 patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
-xlim([-12 106]); xticks(0:24:106);
+xlim([-12 106]); xticks(0:24:106); xtickangle(45);
 
 hold on; 
 ii=ceil(find(MY==nanmax(MY(116,:)))/300);
@@ -130,7 +130,7 @@ yl=[0 400];
 
 figure(1); subplot(3,2,5); 
 patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
-xlim([-12 106]); xticks(0:24:144); 
+xlim([-12 106]); xticks(0:24:144); xtickangle(45);
 
 hold on; 
 
@@ -181,7 +181,7 @@ yl=[150 1800];
 figure(1); subplot(3,2,6); 
 yticks(600:600:1800);
 xlim([0 106]); 
-xticks(0:16:max(max(time_adjusted)));
+xticks(0:16:max(max(time_adjusted))); xtickangle(45);
 ylim([300 1800]);
 
 hold on; 
@@ -237,7 +237,7 @@ yl=[0 2800];
 figure(1); subplot(3,2,4); 
 yticks(200:1000:2200);
 xlim([0 106]); 
-xticks(0:16:max(max(time_adjusted)));
+xticks(0:16:max(max(time_adjusted))); xtickangle(45);
 ylim([0 2800]);
 
 
@@ -274,10 +274,10 @@ han.YLabel.Visible='on';
 ylabel(han,'Fluorescence (a.u.)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.4;
+y1(1)=y1(1)*1.8;
 han.YLabel.Position=y1;
 
 %% Saving
 cd([selpath,'/figures/fig3']);
 fname='fig3A';
-fig_save_font_20;
+fig_save_font_20_ssf;

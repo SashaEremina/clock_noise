@@ -58,4 +58,4 @@ title ('Simulations under LL');
 %% Saving - disabled
 cd([selpath,'/figures/fig3']);
 fname='fig3C';
-fig_save_font_20;
+fig_save_font_20_ssf;
