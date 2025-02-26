@@ -56,4 +56,4 @@ ylabel ('Trough-to-trough variance');
 %% Saving
 cd([selpath, '/figures/fig4']);
 fname='fig4B';
-fig_save_font_20;
+fig_save_font_20_ssf;

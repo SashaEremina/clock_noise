@@ -61,7 +61,7 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(1)=fill(x2, inBetween, 'b','DisplayName','$\sigma$ medium LD');
+h(1)=fill(x2, inBetween, 'b','DisplayName','\sigma medium LD');
 set(h(1),'facealpha',.3);
 
 hold on; 
@@ -135,7 +135,7 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(3)=fill(x2, inBetween, 'g','DisplayName','$\sigma$ low LD');
+h(3)=fill(x2, inBetween, 'g','DisplayName','\sigma low LD');
 set(h(3),'facealpha',.3);
 
 hold on; 
@@ -152,7 +152,7 @@ hold on; text (0,yl(2)*0.95,strcat('n low LD = ',{' '},num2str(GR.m_cell_num(1))
 
 %% Figure styling
 legend([h(3) h(4) h(1) h(2)],'Location','BestOutside');
-xticks(0:24:144); 
+xticks(0:24:144); xtickangle(0);
 xlim([-12 120]);
 ylim([0 1100]); yticks(0:250:1000);
 title('Clock reporter expression');
@@ -185,7 +185,7 @@ hold on; plot(Ti, Tr,'Color',[0.45 0.9 0.15 0.5]);
 t(1)=plot(Ti(:,1),Tr(:,1),'Color',[0.45 0.9 0.15 0.5],'LineWidth',2,'DisplayName','low LD $\ $ $\ $ $\ $');
 
 xlim([-12 120])
-xticks(0:24:120);
+xticks(0:24:120); xtickangle(0);
 ylim([0 0.5]);
 yticks(0:0.1:0.5);
 
@@ -207,7 +207,7 @@ for i=1:length(D)
 end
 
 hold on; h=plot(Ti, Tr,'Color',[0.2 0.5 0.9 0.5]);
-t(2)=plot(Ti(:,1),Tr(:,1),'Color',[0.2 0.5 0.9 0.5],'LineWidth',2,'DisplayName','medium LD $\ $');
+t(2)=plot(Ti(:,1),Tr(:,1),'Color',[0.2 0.5 0.9 0.5],'LineWidth',2,'DisplayName','medium LD');
 
 %mock plot for legend
 t(1)=plot(NaN,NaN,'Color',[0.45 0.9 0.15 0.5],'LineWidth',4,'DisplayName','low LD');
@@ -220,8 +220,12 @@ ylabel({'KaiC-P (normalised)'});
 ylim([0.1 0.4]); yticks(0.1:0.1:0.4);
 
 %MANUAL ADJUSTMENTS TO FIG.SIZE
+han = gca;
+y1=han.YLabel.Position;
+y1(1)=y1(1)*1.6;
+han.YLabel.Position=y1;
 
 %% Saving
 cd([selpath,'/figures/fig4']);
 fname='fig4A';
-fig_save_font_20;
+fig_save_font_20_ssf;
