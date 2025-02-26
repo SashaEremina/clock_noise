@@ -62,7 +62,7 @@ yl=[0 700];
 figure(1); subplot(3,2,1); yl=[0 700]; patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:200:600);
 xlim([-12 140]);
-xticks(0:24:120);
+xticks(0:24:120); xtickangle(45);
 ylim([0 700]);
 
 clear hL;
@@ -80,7 +80,8 @@ hold on; h(1)=plot(time_adjusted(start_p:end,t_m),MY_a(start_p:end),'LineWidth',
 title('WT'); set(gca,'Fontsize', 9);
 
 m_cell_num(1)=surv(2);
-text (-10,yl(2)*0.85,strcat('n=',num2str(surv(2))), 'Interpreter', 'latex');
+%text (-10,yl(2)*0.85,strcat('n=',num2str(surv(2))), 'Interpreter', 'latex');
+text (-10,yl(2)*0.85,strcat('n=',num2str(surv(2))));
 
 %% 2 LalA
 cd([selpath, '/data/datasets/del_lalA_med_LL']);
@@ -116,7 +117,7 @@ yl=[0 600];
 figure(1); subplot(3,2,5); yl=[0 600]; patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:200:600);
 xlim([-12 140]); 
-xticks(0:24:120); 
+xticks(0:24:120); xtickangle(45);
 ylim([0 600]);  
 
 clear hL;
@@ -131,10 +132,13 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 MY_a=mean(MY','omitnan');
 t_m=ceil(find(time_adjusted==max(max(time_adjusted)), 1 )/size(time_adjusted,1));
 hold on; h(1)=plot(time_adjusted(start_p:end,t_m),MY_a(start_p:end),'LineWidth',1,'Color','k','DisplayName','mean');
-title('$\Delta$\it lalA'); set(gca,'Fontsize', 9);
+%title('$\Delta$\it lalA'); set(gca,'Fontsize', 9);
+title('\it\DeltalalA'); set(gca,'Fontsize', 9);
+
 
 m_cell_num(1)=surv(2);
-text(-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+%text(-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+text(-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))));
 
 
 %% 3 prkE
@@ -175,7 +179,7 @@ yl=[0 600];
 figure(1); subplot(3,2,4); yl=[0 600]; patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:200:600);
 xlim([-12 140]); 
-xticks(0:24:120); 
+xticks(0:24:120); xtickangle(45);
 ylim([0 600]);  
 
 clear hL;
@@ -190,10 +194,13 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 MY_a=mean(MY','omitnan');
 t_m=ceil(find(time_adjusted==max(max(time_adjusted)), 1 )/size(time_adjusted,1));
 hold on; h(1)=plot(time_adjusted(start_p:end,t_m),MY_a(start_p:end),'LineWidth',1,'Color','k','DisplayName','mean');
-title('$\Delta$\it prkE'); set(gca,'Fontsize', 9);
+%title('$\Delta$\it prkE'); set(gca,'Fontsize', 9);
+title('\it\DeltaprkE'); set(gca,'Fontsize', 9);
 
 m_cell_num(1)=surv(2);
-text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+%text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))));
+
 
 lgd=legend([h(1)]);
 lgd.Position(2)=lgd.Position(2)*0.95;
@@ -236,7 +243,7 @@ yl=[0 1000];
 figure(1); subplot(3,2,2); yl=[0 1000]; patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:300:900);
 xlim([-12 140]); 
-xticks(0:24:120);
+xticks(0:24:120); xtickangle(45);
 ylim([100 1000]);  
 
 clear hL;
@@ -251,10 +258,12 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 MY_a=mean(MY','omitnan');
 t_m=ceil(find(time_adjusted==max(max(time_adjusted)), 1 )/size(time_adjusted,1));
 hold on; h(1)=plot(time_adjusted(start_p:end,t_m),MY_a(start_p:end),'LineWidth',1,'Color','k','DisplayName','mean');
-title('$\Delta$\it ldpA'); set(gca,'Fontsize', 9);
+%title('$\Delta$\it ldpA'); set(gca,'Fontsize', 9);
+title('\it\DeltaldpA'); set(gca,'Fontsize', 9);
 
 m_cell_num(1)=surv(2);
-text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+%text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))));
 
 %% 5 pex
 
@@ -292,7 +301,7 @@ yl=[0 700];
 figure(1); subplot(3,2,3); yl=[0 700]; patch_universal(time_adjusted(start_p:end,:),'night',MY(start_p:end,:),1,yl);
 yticks(0:200:600);
 xlim([-12 140]);
-xticks(0:24:120); 
+xticks(0:24:120); xtickangle(45);
 ylim([100 700]);  
 
 clear hL
@@ -307,26 +316,35 @@ l=min(unique(ceil(find(time_adjusted==max(max(time_adjusted)))/300)));
 MY_a=mean(MY','omitnan');
 t_m=ceil(find(time_adjusted==max(max(time_adjusted)), 1 )/size(time_adjusted,1));
 hold on; h(1)=plot(time_adjusted(start_p:end,t_m),MY_a(start_p:end),'LineWidth',1,'Color','k','DisplayName','mean');
-title('$\Delta$\it pex');
+%title('$\Delta$\it pex');
+title('\it\Deltapex'); set(gca,'Fontsize', 9);
+
 set(gca,'Fontsize', 9);
 
 m_cell_num(1)=surv(2);
-text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
-
+%text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))), 'Interpreter', 'latex');
+text (-10,yl(2)*0.85,strcat('n=',num2str(m_cell_num(1))));
 
 %% Legend
 subplot(3,2,4);
 
-r=-350;
+r=-550;
 rr=200;
 
 w5(61:62)=NaN; %filtering the outliers out - non-real peaks in oscillations drive the mean period down
 
-text(-15,r,strcat('$\mathrm{p}_{WT}$=', num2str(round(mean(w5,'omitnan'),1)),'$\pm$',num2str(round(std(w5,'omitnan'),1)),'h'));
-text(-15,r-4*rr,strcat('$\mathrm{p}_{\Delta \it lalA}$=', num2str(round(mean(w4,'omitnan'),1)),'$\pm$',num2str(round(std(w4,'omitnan'),1)),'h'));
-text(-15, r-rr,strcat('$\mathrm{p}_{\Delta \it ldpA}$=', num2str(round(mean(w1,'omitnan'),1)),'$\pm$',num2str(round(std(w1,'omitnan'),1)),'h'));
-text(-15, r-2*rr,strcat('$\mathrm{p}_{\Delta \it pex}$=', num2str(round(mean(w2,'omitnan'),1)),'$\pm$',num2str(round(std(w2,'omitnan'),1)),'h'));
-text(-15,r-3*rr,strcat('$\mathrm{p}_{\Delta \it prkE}$=', num2str(round(mean(w3,'omitnan'),1)),'$\pm$',num2str(round(std(w3,'omitnan'),1)),'h'));
+text(-15,r,strcat('p_{WT}=', num2str(round(mean(w5,'omitnan'),1)),'\pm',num2str(round(std(w5,'omitnan'),1)),{' '},'h'));
+text(-15,r-4*rr,strcat('p_{\it\DeltalalA}=', num2str(round(mean(w4,'omitnan'),1)),'\pm',num2str(round(std(w4,'omitnan'),1)),{' '},'h'));
+text(-15, r-rr,strcat('p_{\it\DeltaldpA}=', num2str(round(mean(w1,'omitnan'),1)),'\pm',num2str(round(std(w1,'omitnan'),1)),{' '},'h'));
+text(-15, r-2*rr,strcat('p_{\it\Deltapex}=', num2str(round(mean(w2,'omitnan'),1)),'\pm',num2str(round(std(w2,'omitnan'),1)),{' '},'h'));
+text(-15,r-3*rr,strcat('p_{\it\DeltaprkE}=', num2str(round(mean(w3,'omitnan'),1)),'\pm',num2str(round(std(w3,'omitnan'),1)),{' '},'h'));
+
+
+% text(-15,r,strcat('$\mathrm{p}_{WT}$=', num2str(round(mean(w5,'omitnan'),1)),'$\pm$',num2str(round(std(w5,'omitnan'),1)),'h'));
+% text(-15,r-4*rr,strcat('$\mathrm{p}_{\Delta \it lalA}$=', num2str(round(mean(w4,'omitnan'),1)),'$\pm$',num2str(round(std(w4,'omitnan'),1)),'h'));
+% text(-15, r-rr,strcat('$\mathrm{p}_{\Delta \it ldpA}$=', num2str(round(mean(w1,'omitnan'),1)),'$\pm$',num2str(round(std(w1,'omitnan'),1)),'h'));
+% text(-15, r-2*rr,strcat('$\mathrm{p}_{\Delta \it pex}$=', num2str(round(mean(w2,'omitnan'),1)),'$\pm$',num2str(round(std(w2,'omitnan'),1)),'h'));
+% text(-15,r-3*rr,strcat('$\mathrm{p}_{\Delta \it prkE}$=', num2str(round(mean(w3,'omitnan'),1)),'$\pm$',num2str(round(std(w3,'omitnan'),1)),'h'));
 
 
 %% Setting fonts etc
@@ -336,14 +354,15 @@ han=axes(figure(1),'visible','off');
 han.XLabel.Visible='on';
 xlabel(han,'Time (h)');
 han.YLabel.Visible='on';
-ylabel(han,'Fluorescence (a.u)');
+ylabel(han,'Fluorescence (a.u.)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.6;
+y1(1)=y1(1)*1.8;
 han.YLabel.Position=y1;
 
 %Saving - disabled
 cd([selpath,'/figures/fig2']);
 fname='fig2B';
-fig_save_font_20;
+%fig_save_font_20;
+fig_save_font_20_ssf;
 
