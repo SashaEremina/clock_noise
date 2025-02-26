@@ -76,14 +76,14 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
+h(1)=fill(x2, inBetween, 'm','DisplayName','\sigma');
 set(h(1),'facealpha',.3);
 
 hold on; 
 h(2)=plot(time_adjusted(st:end,11),MY_smooth(st:end,11),'m','LineWidth',2,'DisplayName',sprintf('representative \n lineage'));
 
-text(24, 0.7*max(intensity2),'$\leftarrow$ expected ');
-text(51, 0.55*max(intensity2),'$\leftarrow$ received');
+text(24, 0.7*max(intensity2),'\leftarrow expected ');
+text(51, 0.55*max(intensity2),'\leftarrow received');
 
 ylim([0 max(intensity2)*0.76])
 yticks(0:150:600)
@@ -169,7 +169,7 @@ curve2 = y - std_dev;
 x2 = [x, fliplr(x)];
 inBetween = [curve1, fliplr(curve2)];
 hold on;
-h(1)=fill(x2, inBetween, 'm','DisplayName','$\sigma$');
+h(1)=fill(x2, inBetween, 'm','DisplayName','\sigma');
 set(h(1),'facealpha',.3);
 
 hold on; 
@@ -191,11 +191,11 @@ ylabel(han,'Fluorescence (a.u.)');
 xlabel(han,'Time (h)');
 
 y1=han.YLabel.Position;
-y1(1)=y1(1)*1.6;
+y1(1)=y1(1)*2.2;
 han.YLabel.Position=y1;
 
 %% Saving
 cd([selpath,'/figures/fig5']);
 fname='fig5A';
-fig_save_font_20;
+fig_save_font_20_ssf;
 

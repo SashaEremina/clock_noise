@@ -18,7 +18,7 @@ p(1)=errorbar(nde_sim(:,1)+0.05,nde_sim(:,2),nde_sim(:,2).*nde_sim(:,3),'ob','Li
 dd(1)=errorbar(nde_exp(:,1)-0.05,nde_exp(:,2),nde_exp(:,2).*nde_exp(:,3),'om','LineWidth',1); hold on;
 
 xlabel('Previous day length (h)');
-xlim([10 15]); ylim([4 10]); xticks(10:15); yticks(5:1:9); ylim([5 9])
+xlim([10 15]); ylim([4 10]); xticks(11:15); yticks(5:1:9); ylim([5 9])
 title('Noisy day end');
 
 %fit plot
@@ -36,18 +36,18 @@ T = table(d,tts_a,f,tts_a-f,'VariableNames',{'X','Y','Fit','FitError'});
 round([T.FitError],2);
 
 hold on;
-h(2)=plot(d,yfit,'r-','DisplayName',strcat('data fit $\ $  $\ $ '));
+h(2)=plot(d,yfit,'r-','DisplayName',strcat('data fit'));
 
 %GOF plot
 [y_fit2,i]=sort(yfit);
 delta2=delta(i);
 d2=d(i);
 
-h(3)=plot(d2,y_fit2+2*delta2,'k--','DisplayName','95\% CI');
+h(3)=plot(d2,y_fit2+2*delta2,'k--','DisplayName','95% CI');
 h(4)=plot(d2,y_fit2-2*delta2,'k--');
 
-text(11.5, 8.5, strcat('slope=',num2str(round(P(1),2))));
-text(12.25, 7.9,'$\downarrow$');
+text(11.5, 8.5, strcat('slope = ',{' '},num2str(round(P(1),2))));
+text(12.25, 7.9,'\downarrow');
 
 
 p(1).DisplayName='simulation';
@@ -89,8 +89,8 @@ hold on;
 h(2)=plot(d,yfit,'r-','DisplayName',strcat('data fit'));
 
 hold on;
-text(0.2, 9, strcat('slope=',num2str(round(P(1),2))));
-text(0.9,8, '$\downarrow$');
+text(0.2, 9, strcat('slope = ',{' '},num2str(round(P(1),2))));
+text(0.9,8, '\downarrow');
 
 
 %GOF plot
@@ -98,7 +98,7 @@ text(0.9,8, '$\downarrow$');
 delta2=delta(i);
 d2=d(i);
 
-h(3)=plot(d2,y_fit2+2*delta2,'k--','DisplayName','95\% CI');
+h(3)=plot(d2,y_fit2+2*delta2,'k--','DisplayName','95% CI');
 h(4)=plot(d2,y_fit2-2*delta2,'k--');
 
 p(2).DisplayName='simulation';
@@ -117,4 +117,4 @@ han.YLabel.Visible = 'on';
 %% Saving
 cd([selpath,'/figures/fig5']);
 fname='fig5B';
-fig_save_font_20_box_on;
+fig_save_font_20_box_on_ssf;
